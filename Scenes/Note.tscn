@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbm5np3fwngxu"]
+
+[ext_resource type="Script" path="res://Scripts/Note.gd" id="1_gawg6"]
+[ext_resource type="SpriteFrames" path="res://Frames/note_frames.tres" id="2_hxgjc"]
+[ext_resource type="Texture2D" uid="uid://bn3706wi637bc" path="res://Sprites/game/particles/star.png" id="5_bikjj"]
+[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="6_qk44h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1if3f"]
+size = Vector2(8, 8)
+
+[node name="Note" type="Area2D" groups=["note"]]
+script = ExtResource("1_gawg6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_hxgjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1if3f")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+local_coords = true
+texture = ExtResource("5_bikjj")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+linear_accel_min = -100.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_qk44h")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
