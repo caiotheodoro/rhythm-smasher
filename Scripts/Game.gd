@@ -24,7 +24,9 @@ var spawn_4_beat = 0
 var lane = 0
 var rand = 0
 var note = load("res://Scenes/Note.tscn")
+var bomb = load("res://Scenes/Bomb.tscn")
 var instance
+var instance2
 
 func _ready():
 	randomize()
@@ -36,7 +38,7 @@ func _ready():
 func _input(event):
 	if event.is_action("escape"):
 		if get_tree().change_scene_to_file("res://Scenes/Menu.tscn") != 0:
-			print("Error Changing Scene To Menu")
+			print("erro")
 
 func _on_conductor_measure(pos):
 	if pos == 1:
@@ -113,7 +115,7 @@ func _on_conductor_beat(pos):
 		Global.okay = okay
 		Global.missed = missed
 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
-			print ("Error changing scene to End")
+			print ("erro")
 
 func _spawn_notes(to_spawn):
 	if to_spawn > 0:
@@ -121,6 +123,9 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
+#		instance2 = bomb.instantiate()
+#		instance2.initialize(lane)
+#		add_child(instance2)
 	if to_spawn > 1:
 		while rand == lane:
 			rand = randi() % 3
@@ -128,6 +133,9 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
+#		instance2 = note.instantiate()
+#		instance2.initialize(lane)
+#		add_child(instance2)
 
 func increment_score(by):
 	if by > 0:
@@ -148,7 +156,7 @@ func increment_score(by):
 	score += by * combo
 	$Label.text = str(score)
 	if combo > 0:
-		$Combo.text = str(combo) + " combo!"
+		$Combo.text = str(combo) + " strike"
 		if combo > max_combo:
 			max_combo = combo
 	else:

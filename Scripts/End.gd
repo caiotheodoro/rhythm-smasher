@@ -14,11 +14,11 @@ func _ready():
 
 func _on_play_again_pressed():
 	if get_tree().change_scene_to_file("res://Scenes/Game.tscn") != OK:
-		print("Error Changing scene to Game")
+		print("erro")
 
 
 
 
 func _on_back_to_menu_pressed():
 	if get_tree().change_scene_to_file("res://Scenes/Menu.tscn") != OK:
-		print("Error changing scene to Menu")
+		print("erro")

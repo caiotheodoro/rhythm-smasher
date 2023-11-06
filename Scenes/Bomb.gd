@@ -1,12 +1,12 @@
 extends Area2D
 
-const TARGET_Y = 164
-const SPAWN_Y = -16
-const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
+const TARGET_Y = 150
+const SPAWN_X = 85
+const DIST_TO_TARGET = TARGET_Y - SPAWN_X
 
-const LEFT_LANE_SPAWN = Vector2(10, SPAWN_Y)
-const CENTER_LANE_SPAWN = Vector2(30, SPAWN_Y)
-const RIGHT_LANE_SPAWN = Vector2(50, SPAWN_Y)
+const LEFT_LANE_SPAWN = Vector2(260, SPAWN_X)
+const CENTER_LANE_SPAWN = Vector2(290, SPAWN_X)
+const RIGHT_LANE_SPAWN = Vector2(320, SPAWN_X)
 
 var speed = 0
 var hit = false
@@ -16,12 +16,12 @@ func _ready():
 	
 func _physics_process(delta):
 	if !hit:
-		position.y += speed * delta
-		if position.y > 200:
+		position.x -= speed * delta
+		if position.x < 0:
 			queue_free()
 			get_parent().reset_combo()
 	else:
-		$Node2D.position.y -= speed * delta
+		$Node2D.position.x += speed * delta
 
 func initialize(lane):
 	if lane == 0:

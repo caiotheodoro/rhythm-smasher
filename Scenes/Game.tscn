@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=9 format=3 uid="uid://crqqxkb3nmoyy"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="4_2dk4b"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="5_te7va"]
 [ext_resource type="AudioStream" uid="uid://dt352eqldju7q" path="res://Songs/starboy.ogg" id="8_8i3m2"]
+[ext_resource type="PackedScene" uid="uid://yylf1djaqni1" path="res://Scenes/Mob_Bomb.tscn" id="8_4113a"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="9_1ipt3"]
 [ext_resource type="PackedScene" uid="uid://hltrak72pjyp" path="res://Scenes/Conductor.tscn" id="10_6dfgs"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(22, 86)
 script = ExtResource("1_w2h0b")
 
 [node name="ArrowUp" parent="." instance=ExtResource("2_r8yyp")]
@@ -21,7 +23,7 @@ sprite_frames = ExtResource("4_2dk4b")
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(50, 86)
+position = Vector2(50, 84)
 sprite_frames = ExtResource("5_te7va")
 input = "right"
 
@@ -37,6 +39,7 @@ theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
 text = "0
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="Combo" type="Label" parent="."]
 offset_left = 63.0
@@ -47,11 +50,17 @@ scale = Vector2(0.570442, 0.661765)
 theme_override_colors/font_color = Color(0.176471, 0.290196, 0.843137, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
+metadata/_edit_use_anchors_ = true
 
 [node name="Conductor" parent="." instance=ExtResource("10_6dfgs")]
 stream = ExtResource("8_8i3m2")
 volume_db = -15.0
 bpm = 115
+
+[node name="MobBomb" parent="." instance=ExtResource("8_4113a")]
+visible = false
+position = Vector2(162, 83)
+scale = Vector2(0.446702, 0.69507)
 
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Measure" from="Conductor" to="." method="_on_conductor_measure"]
