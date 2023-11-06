@@ -13,6 +13,7 @@ size = Vector2(8, 16)
 size = Vector2(8, 24)
 
 [node name="ArrowButton" type="AnimatedSprite2D"]
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("1_lc27u")
 script = ExtResource("3_hbovq")
 

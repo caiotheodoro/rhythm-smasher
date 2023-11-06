@@ -9,6 +9,7 @@
 size = Vector2(8, 8)
 
 [node name="Note" type="Area2D" groups=["note"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gawg6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -5,38 +5,40 @@
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="4_2dk4b"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="5_te7va"]
+[ext_resource type="AudioStream" uid="uid://dt352eqldju7q" path="res://Songs/starboy.ogg" id="8_8i3m2"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="9_1ipt3"]
 [ext_resource type="PackedScene" uid="uid://hltrak72pjyp" path="res://Scenes/Conductor.tscn" id="10_6dfgs"]
-[ext_resource type="AudioStream" uid="uid://dgwx657vj85v6" path="res://Songs/song.ogg" id="11_8vybm"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_w2h0b")
 
 [node name="Road" type="Sprite2D" parent="."]
 position = Vector2(200, 0)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_gmk17")
 centered = false
 
 [node name="ArrowUp" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(260, 164)
+position = Vector2(230, 82)
 input = "up"
 
 [node name="ArrowLeft" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(220, 164)
+position = Vector2(210, 82)
 sprite_frames = ExtResource("4_2dk4b")
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(300, 164)
+position = Vector2(250, 83)
 sprite_frames = ExtResource("5_te7va")
 input = "right"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 20.0
+offset_left = 263.0
+offset_top = -1.0
+offset_right = 303.0
+offset_bottom = 15.0
+scale = Vector2(0.350785, 0.417476)
 theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
@@ -44,16 +46,17 @@ text = "0
 "
 
 [node name="Combo" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 20.0
-offset_right = 96.0
-offset_bottom = 34.0
+offset_left = 263.0
+offset_top = 6.0
+offset_right = 355.0
+offset_bottom = 20.0
+scale = Vector2(0.570442, 0.661765)
 theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
 
 [node name="Conductor" parent="." instance=ExtResource("10_6dfgs")]
-stream = ExtResource("11_8vybm")
+stream = ExtResource("8_8i3m2")
 volume_db = -15.0
 bpm = 115
 

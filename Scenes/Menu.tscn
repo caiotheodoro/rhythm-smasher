@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djr5d1o7ty1pb"]
+[gd_scene load_steps=16 format=3 uid="uid://djr5d1o7ty1pb"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_t3m4y"]
 [ext_resource type="Texture2D" uid="uid://bk0d35uynjdf0" path="res://Sprites/ui/play_button/play1.png" id="2_pelw8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bkietgb2ry3ph" path="res://Sprites/ui/test_button/test_button1.png" id="9_ogn2c"]
 [ext_resource type="Texture2D" uid="uid://m0xdi4lxkdgr" path="res://Sprites/ui/test_button/test_button2.png" id="10_jqd43"]
 [ext_resource type="AudioStream" uid="uid://c36t0yr3oinkm" path="res://Sounds/bell_ding.ogg" id="11_gyyiw"]
+[ext_resource type="PackedScene" uid="uid://db4lubqejnfxr" path="res://Scenes/Player.tscn" id="12_nj0st"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2h87l"]
 texture = ExtResource("6_ycflg")
@@ -91,6 +92,9 @@ texture_hover = ExtResource("10_jqd43")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureButton"]
 stream = ExtResource("11_gyyiw")
+
+[node name="Player" parent="." instance=ExtResource("12_nj0st")]
+position = Vector2(30, 170)
 
 [connection signal="button_down" from="Start_Button" to="." method="_on_start_button_button_down"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
