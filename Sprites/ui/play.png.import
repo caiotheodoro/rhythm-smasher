@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doeswxqvq1qvr"
-path="res://.godot/imported/Walk-Base-Sheet-White.png-8c1d17c340d79b11b016e591ed03a86c.ctex"
+uid="uid://bba250we1i0hg"
+path="res://.godot/imported/play.png-bab539fefda7c0590d0df3a909c87184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet-White.png"
-dest_files=["res://.godot/imported/Walk-Base-Sheet-White.png-8c1d17c340d79b11b016e591ed03a86c.ctex"]
+source_file="res://Sprites/ui/play.png"
+dest_files=["res://.godot/imported/play.png-bab539fefda7c0590d0df3a909c87184.ctex"]
 
 [params]
 

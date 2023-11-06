@@ -1,12 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmmkegp00cl18"]
 
-[ext_resource type="Texture2D" uid="uid://cnb6vef35n3ad" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_eqpw1"]
-[ext_resource type="Texture2D" uid="uid://cqrqnlx2jpsop" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_uo41u"]
 [ext_resource type="PackedScene" uid="uid://crqqxkb3nmoyy" path="res://Scenes/Game.tscn" id="4_3gta6"]
 [ext_resource type="PackedScene" uid="uid://db4lubqejnfxr" path="res://Scenes/Player.tscn" id="4_sjcbi"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jrist"]
+load_path = "res://.godot/imported/Background.png-9cd9f328be53c3d646575f8f3f3c8791.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8rvho"]
+load_path = "res://.godot/imported/Tiles.png-c0a36c509e6e5539add11c5b88591976.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x01cw"]
-texture = ExtResource("1_eqpw1")
+texture = SubResource("CompressedTexture2D_8rvho")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1431,7 +1435,7 @@ offset_left = -1992.0
 offset_top = -104.0
 offset_right = 3481.0
 offset_bottom = 168.0
-texture = ExtResource("1_uo41u")
+texture = SubResource("CompressedTexture2D_jrist")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1447,11 +1451,11 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Player2" parent="." instance=ExtResource("4_sjcbi")]
+[node name="Player" parent="." instance=ExtResource("4_sjcbi")]
 position = Vector2(8, 84)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player2"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Game" parent="." instance=ExtResource("4_3gta6")]
-position = Vector2(-128, 0)
+position = Vector2(72, 0)

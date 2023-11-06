@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=8 format=3 uid="uid://crqqxkb3nmoyy"]
 
-[ext_resource type="Texture2D" uid="uid://e73s5toue2u1" path="res://Sprites/game/road/road.png" id="1_gmk17"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="4_2dk4b"]
@@ -12,46 +11,40 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_w2h0b")
 
-[node name="Road" type="Sprite2D" parent="."]
-position = Vector2(200, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_gmk17")
-centered = false
-
 [node name="ArrowUp" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(230, 82)
+position = Vector2(30, 85)
 input = "up"
 
 [node name="ArrowLeft" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(210, 82)
+position = Vector2(10, 85)
 sprite_frames = ExtResource("4_2dk4b")
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("2_r8yyp")]
-position = Vector2(250, 83)
+position = Vector2(50, 86)
 sprite_frames = ExtResource("5_te7va")
 input = "right"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-offset_left = 263.0
-offset_top = -1.0
-offset_right = 303.0
-offset_bottom = 15.0
+offset_left = 63.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 18.0
 scale = Vector2(0.350785, 0.417476)
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
+theme_override_colors/font_color = Color(0.278431, 0.137255, 0.862745, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
 text = "0
 "
 
 [node name="Combo" type="Label" parent="."]
-offset_left = 263.0
-offset_top = 6.0
-offset_right = 355.0
-offset_bottom = 20.0
+offset_left = 63.0
+offset_top = 9.0
+offset_right = 155.0
+offset_bottom = 23.0
 scale = Vector2(0.570442, 0.661765)
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
+theme_override_colors/font_color = Color(0.176471, 0.290196, 0.843137, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
 
