@@ -1,51 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bqp4o0u3e25py"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_tkyh6"]
-[ext_resource type="Texture2D" uid="uid://bes64yk1sbnim" path="res://Sprites/game/summon/idle.png" id="2_kvejr"]
+[ext_resource type="Texture2D" uid="uid://bylwn08b7lbk6" path="res://Sprites/bosses/l0_sprite_1-sheet.png" id="2_5h0fh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dac0"]
 radius = 13.0
 height = 50.0
-
-[sub_resource type="Animation" id="Animation_xqqdw"]
-resource_name = "boss_idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kvejr")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
 
 [sub_resource type="Animation" id="Animation_exthq"]
 length = 0.001
@@ -64,14 +24,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:texture")
+tracks/1/path = NodePath("Body:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_kvejr")]
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -86,48 +46,88 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_nsyfm"]
+resource_name = "boss_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wl38"]
 _data = {
 "RESET": SubResource("Animation_exthq"),
-"boss_idle": SubResource("Animation_xqqdw")
+"boss_idle": SubResource("Animation_nsyfm")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jn66l"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flpjq"]
 animation = &"boss_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_288qp"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vvfgs"]
 animation = &"boss_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_607au"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h8bua"]
 animation = &"boss_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34ssu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p10qh"]
 animation = &"boss_idle"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_hvatv"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jn66l")
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0p0fa"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_flpjq")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_288qp")
+blend_point_1/node = SubResource("AnimationNodeAnimation_vvfgs")
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_607au")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_34ssu")
-blend_point_3/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_h8bua")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_p10qh")
+blend_point_3/pos = Vector2(1, 0)
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kfqrr"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2pxth"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7542i"]
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_hvatv")
-states/Idle/position = Vector2(355, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_kfqrr")]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_0p0fa")
+states/Idle/position = Vector2(327, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2pxth")]
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_tkyh6")
 
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(18, 0)
-texture = ExtResource("2_kvejr")
+texture = ExtResource("2_5h0fh")
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

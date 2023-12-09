@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgh07jk6yid5x"]
+
+[ext_resource type="Script" path="res://Scenes/hearths_container.gd" id="1_3b5bi"]
+
+[node name="hearthsContainer" type="HBoxContainer"]
+layout_direction = 3
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.428
+anchor_right = 0.187
+anchor_bottom = 0.428
+offset_left = 0.159996
+offset_top = -0.0400085
+offset_right = 40.16
+offset_bottom = 39.96
+theme_override_constants/separation = 1
+script = ExtResource("1_3b5bi")

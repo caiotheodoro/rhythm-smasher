@@ -1,7 +1,11 @@
 extends CharacterBody2D
+class_name Player
 
+signal healthChanged
 
 @export var char_speed : float = 0
+@export var maxHealth = 3
+@export var currentHealth: int = maxHealth
 const JUMP_VELOCITY = -400.0
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -82,3 +86,14 @@ func update_animation_parameters():
 		animation_tree["parameters/Right/blend_position"] = direction
 		animation_tree["parameters/Hide/blend_position"] = direction
 		animation_tree["parameters/Left/blend_position"] = direction
+
+func set_max_health(health: int):
+	maxHealth = health
+	currentHealth = health
+
+func hurted():
+	currentHealth -=1
+	if currentHealth == 0:
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+		currentHealth = maxHealth
+	healthChanged.emit(currentHealth)

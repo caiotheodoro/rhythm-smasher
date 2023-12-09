@@ -1,13 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=14 format=3 uid="uid://crqqxkb3nmoyy"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="4_2dk4b"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="5_te7va"]
-[ext_resource type="AudioStream" uid="uid://dt352eqldju7q" path="res://Songs/starboy.ogg" id="8_8i3m2"]
+[ext_resource type="AudioStream" uid="uid://di3podufbabwv" path="res://Songs/around_the_world.mp3" id="7_qy62l"]
 [ext_resource type="PackedScene" uid="uid://yylf1djaqni1" path="res://Scenes/Mob_Bomb.tscn" id="8_4113a"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="9_1ipt3"]
+[ext_resource type="PackedScene" uid="uid://db4lubqejnfxr" path="res://Scenes/Player.tscn" id="9_ajde8"]
 [ext_resource type="PackedScene" uid="uid://hltrak72pjyp" path="res://Scenes/Conductor.tscn" id="10_6dfgs"]
+[ext_resource type="PackedScene" uid="uid://bqp4o0u3e25py" path="res://Scenes/Boss.tscn" id="10_b3qv8"]
+[ext_resource type="Script" path="res://Scripts/boss_health_bar.gd" id="11_oetlg"]
+[ext_resource type="Texture2D" uid="uid://mtvvpxych28" path="res://Sprites/healthbarUnder.png" id="12_qae2g"]
+[ext_resource type="Texture2D" uid="uid://bvmkkwixkwrk3" path="res://Sprites/healthbarProgress.png" id="13_r2pbh"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(22, 86)
@@ -29,23 +34,23 @@ input = "right"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-offset_left = 63.0
-offset_top = 2.0
-offset_right = 103.0
+offset_left = 83.0
+offset_top = -10.0
+offset_right = 123.0
 offset_bottom = 18.0
 scale = Vector2(0.350785, 0.417476)
 theme_override_colors/font_color = Color(0.278431, 0.137255, 0.862745, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 30
 text = "0
 "
 metadata/_edit_use_anchors_ = true
 
 [node name="Combo" type="Label" parent="."]
-offset_left = 63.0
-offset_top = 9.0
-offset_right = 155.0
-offset_bottom = 23.0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 175.0
+offset_bottom = 20.0
 scale = Vector2(0.570442, 0.661765)
 theme_override_colors/font_color = Color(0.176471, 0.290196, 0.843137, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
@@ -53,7 +58,7 @@ theme_override_font_sizes/font_size = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="Conductor" parent="." instance=ExtResource("10_6dfgs")]
-stream = ExtResource("8_8i3m2")
+stream = ExtResource("7_qy62l")
 volume_db = -15.0
 bpm = 115
 
@@ -61,6 +66,42 @@ bpm = 115
 visible = false
 position = Vector2(162, 83)
 scale = Vector2(0.446702, 0.69507)
+
+[node name="Player" parent="." instance=ExtResource("9_ajde8")]
+position = Vector2(120, 83)
+
+[node name="RemainTime" type="Label" parent="."]
+offset_left = 263.0
+offset_top = 3.0
+offset_right = 391.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 7
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 232.0
+offset_top = 3.0
+offset_right = 272.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 8
+text = "Tempo:"
+
+[node name="Boss" parent="." instance=ExtResource("10_b3qv8")]
+position = Vector2(176, 76)
+scale = Vector2(1.02489, 0.932597)
+floor_stop_on_slope = false
+floor_block_on_wall = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="bossHealthBar" type="TextureProgressBar" parent="CanvasLayer2" node_paths=PackedStringArray("boss")]
+offset_left = 251.0
+offset_top = 2.0
+offset_right = 315.0
+offset_bottom = 42.0
+texture_under = ExtResource("12_qae2g")
+texture_progress = ExtResource("13_r2pbh")
+script = ExtResource("11_oetlg")
+boss = NodePath("../../Boss")
 
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Measure" from="Conductor" to="." method="_on_conductor_measure"]

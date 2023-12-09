@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://df5nc2wutl8s8"]
+
+[ext_resource type="Script" path="res://Scenes/game_over.gd" id="1_p48pm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccspm"]
+font_size = 40
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p48pm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 176.0
+color = Color(0.0745098, 0.141176, 0.160784, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 56.0
+offset_right = 267.0
+offset_bottom = 114.0
+text = "Fim de jogo"
+label_settings = SubResource("LabelSettings_ccspm")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 128.0
+offset_right = 216.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 10
+text = "Jogar novamente"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Score final:"
+
+[node name="FinalScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 94.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

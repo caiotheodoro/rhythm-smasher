@@ -8,7 +8,7 @@ var great = 0
 var good = 0
 var okay = 0
 var missed = 0
-
+signal healthChanged
 var bpm = 115
 
 var song_position = 0.0
@@ -28,6 +28,10 @@ var bomb = load("res://Scenes/Bomb.tscn")
 var instance
 var instance2
 
+@onready var player = $Player
+@onready var boss = $Boss
+@onready var bossHealthBar = $CanvasLayer2/bossHealthBar
+@onready var conductor = $Conductor
 func _ready():
 	randomize()
 	$Conductor.play_with_beat_offset(6)
@@ -140,7 +144,10 @@ func _spawn_notes(to_spawn):
 func increment_score(by):
 	if by > 0:
 		combo += 1
+		boss.hurt_by_player(combo)
+		bossHealthBar.update(boss.current_boss_health * 100 / boss.boss_health)
 	else:
+		player.hurted()
 		combo = 0
 	
 	if by == 3:
@@ -168,3 +175,5 @@ func reset_combo():
 	$Combo.text = ""
 
 
+func  _process(delta):
+	$RemainTime.text = str($Conductor.get_remaining_time())

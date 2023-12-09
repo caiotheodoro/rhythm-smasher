@@ -6,7 +6,6 @@ var okay = false
 var current_note = null
 
 @export var input = ""
-
 func _unhandled_input(event):
 	if event.is_action(input):
 		if event.is_action_pressed(input, false):
@@ -21,8 +20,10 @@ func _unhandled_input(event):
 					get_parent().increment_score(1)
 					current_note.destroy(1)
 				_reset()
+			
 			else:
 				get_parent().increment_score(0)
+				
 		if event.is_action_pressed(input):
 			frame = 1
 		elif event.is_action_released(input):

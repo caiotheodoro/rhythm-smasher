@@ -14,7 +14,7 @@ var measure = 1
 # Determine how close to the beat an event is
 var closest = 0
 var time_off_beat = 0.0
-
+var total_length = 0
 signal Beat(pos)
 signal Measure(pos)
 
@@ -64,3 +64,20 @@ func _on_start_timer_timeout():
 		play()
 		$StartTimer.stop()
 	_report_beat()
+
+func play_music(music: String):
+	var player = AudioStreamPlayer.new()
+	player.stream = load(music)
+	player.play()
+	total_length = player.stream.get_length()
+	
+func change_speed(speed: float):
+	sec_per_beat = 60.0 / speed
+	$StartTimer.wait_time = sec_per_beat
+	$StartTimer.start()
+	
+func get_remaining_time():
+	var remaining_seconds = total_length - song_position
+	var minutes = int(remaining_seconds / 60)
+	var seconds = int(int(remaining_seconds) % 60)
+	return str(minutes) + ":" + str(seconds).pad_zeros(2)
