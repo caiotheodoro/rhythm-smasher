@@ -14,6 +14,7 @@ func _ready():
 	heartsContainer.updateHearts(player.currentHealth)
 	player.healthChanged.connect(heartsContainer.updateHearts)
 	game.play_music(Global.currentBoss.music)
+	boss.set_boss_sprite(Global.currentBoss.sprite)
 	conductor.play_music(Global.currentBoss.music)
 	conductor.change_speed(Global.currentBoss.speed)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

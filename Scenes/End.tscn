@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4a5ou60bmcf"]
+[gd_scene load_steps=5 format=3 uid="uid://d4a5ou60bmcf"]
 
 [ext_resource type="Script" path="res://Scripts/End.gd" id="1_83e5n"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="3_byjqs"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="3_q8i01"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="5_btjoi"]
 
 [node name="End" type="Node2D"]
@@ -9,24 +11,24 @@ script = ExtResource("1_83e5n")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 319.0
 offset_bottom = 180.0
-color = Color(0.32549, 0.219608, 0.4, 1)
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 85.0
-offset_top = 100.0
-offset_right = 164.0
-offset_bottom = 116.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
-theme_override_fonts/font = ExtResource("5_btjoi")
+offset_left = 68.0
+offset_top = 84.0
+offset_right = 207.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q8i01")
+theme_override_font_sizes/font_size = 10
 text = " SCORE FINAL:"
 vertical_alignment = 1
 
 [node name="ScoreNumber" type="Label" parent="."]
-offset_left = 161.0
-offset_top = 100.0
-offset_right = 225.0
-offset_bottom = 116.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
+offset_left = 156.0
+offset_top = 85.0
+offset_right = 220.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_btjoi")
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -36,14 +38,17 @@ offset_left = 107.0
 offset_top = 138.0
 offset_right = 198.0
 offset_bottom = 160.0
+theme = ExtResource("3_byjqs")
 theme_override_font_sizes/font_size = 10
 text = "Jogar novamente"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 111.0
-offset_top = 32.0
-offset_right = 205.0
-offset_bottom = 75.0
+offset_left = 95.0
+offset_top = 33.0
+offset_right = 224.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q8i01")
 text = "Fim de jogo!"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

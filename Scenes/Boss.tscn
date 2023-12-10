@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqp4o0u3e25py"]
+[gd_scene load_steps=30 format=3 uid="uid://bqp4o0u3e25py"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_tkyh6"]
 [ext_resource type="Texture2D" uid="uid://bylwn08b7lbk6" path="res://Sprites/bosses/l0_sprite_1-sheet.png" id="2_5h0fh"]
+[ext_resource type="Texture2D" uid="uid://cptuwnogm80ro" path="res://Sprites/bosses/guardbot1-sheet.png" id="3_qguit"]
+[ext_resource type="Texture2D" uid="uid://b362ruqck8lc6" path="res://Sprites/bosses/crow_idle-sheet.png" id="4_kfvx3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dac0"]
 radius = 13.0
@@ -45,10 +47,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5h0fh")]
+}
 
 [sub_resource type="Animation" id="Animation_nsyfm"]
 resource_name = "boss_idle"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,10 +98,130 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5h0fh")]
+}
+
+[sub_resource type="Animation" id="Animation_mia15"]
+resource_name = "boss2_idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_qguit")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_tpwvk"]
+resource_name = "boss3_idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_kfvx3")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wl38"]
 _data = {
 "RESET": SubResource("Animation_exthq"),
+"boss2_idle": SubResource("Animation_mia15"),
+"boss3_idle": SubResource("Animation_tpwvk"),
 "boss_idle": SubResource("Animation_nsyfm")
 }
 
@@ -114,19 +247,77 @@ blend_point_2/pos = Vector2(0, -0.9)
 blend_point_3/node = SubResource("AnimationNodeAnimation_p10qh")
 blend_point_3/pos = Vector2(1, 0)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_levjq"]
+animation = &"boss2_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikc6p"]
+animation = &"boss2_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ha4wx"]
+animation = &"boss2_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yco2r"]
+animation = &"boss2_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_423th"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_levjq")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ikc6p")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ha4wx")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_yco2r")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8d2rh"]
+animation = &"boss3_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hymf"]
+animation = &"boss3_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xewu"]
+animation = &"boss3_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3n4s5"]
+animation = &"boss3_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ckkob"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8d2rh")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_2hymf")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_5xewu")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_3n4s5")
+blend_point_3/pos = Vector2(1, 0)
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2pxth"]
 advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mjkyd"]
+advance_mode = 2
+advance_condition = &"idle2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qgsty"]
+advance_mode = 2
+advance_condition = &"idle3"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7542i"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_0p0fa")
-states/Idle/position = Vector2(327, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2pxth")]
+states/Idle/position = Vector2(327, 128)
+states/Idle_2/node = SubResource("AnimationNodeBlendSpace2D_423th")
+states/Idle_2/position = Vector2(327, 31)
+states/idle_3/node = SubResource("AnimationNodeBlendSpace2D_ckkob")
+states/idle_3/position = Vector2(284, 188)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2pxth"), "Start", "Idle_2", SubResource("AnimationNodeStateMachineTransition_mjkyd"), "Start", "idle_3", SubResource("AnimationNodeStateMachineTransition_qgsty")]
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_tkyh6")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(18, 0)
+position = Vector2(1, 0)
+scale = Vector2(-1.03962, 1.12336)
 texture = ExtResource("2_5h0fh")
 hframes = 5
 
@@ -143,4 +334,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_7542i")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/conditions/idle = false
+parameters/conditions/idle2 = false
+parameters/conditions/idle3 = false
 parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle_2/blend_position = Vector2(-0.996584, -0.0212766)
+parameters/idle_3/blend_position = Vector2(0, 0)

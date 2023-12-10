@@ -10,9 +10,9 @@ var grade = "N"
 var _is_full_screen = false
 
 var bosses: Array = [
-	{id = 0, music = "res://Songs/around_the_world.mp3", speed = 80, life = 6},
-	{id = 1, music = "res://Songs/starboy.ogg", speed = 100, life = 1},
-	{id = 2, music = "res://Songs/blue.ogg", speed = 140, life = 1},
+	{id = 0, music = "res://Songs/around_the_world.mp3", speed = 80, life = 6,sprite= "parameters/conditions/idle"},
+	{id = 1, music = "res://Songs/starboy.ogg", speed = 100, life = 1,sprite= "parameters/conditions/idle2"},
+	{id = 2, music = "res://Songs/blue.ogg", speed = 140, life = 1,sprite= "parameters/conditions/idle3"},
 ]
 var currentBoss: Dictionary  = bosses[0]
 var currBossIndex = 0

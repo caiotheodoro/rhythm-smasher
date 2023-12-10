@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6m0bmwau4xek"]
+[gd_scene load_steps=5 format=3 uid="uid://c6m0bmwau4xek"]
 
 [ext_resource type="Script" path="res://Scripts/next_level.gd" id="1_bn3ta"]
 [ext_resource type="AudioStream" uid="uid://bcd38rirqm0o8" path="res://Songs/success.mp3" id="2_5dh1x"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4nurd"]
-font_size = 40
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_5x61y"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="4_oglpl"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,29 +18,31 @@ script = ExtResource("1_bn3ta")
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 176.0
-color = Color(0.0470588, 0.156863, 0.647059, 1)
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 56.0
-offset_right = 283.0
-offset_bottom = 114.0
-text = "Sucesso!!"
-label_settings = SubResource("LabelSettings_4nurd")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Score atual:"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 244.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5x61y")
+theme_override_font_sizes/font_size = 30
+text = "Sucesso!!"
 
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_right = 104.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -55,10 +56,11 @@ anchor_left = 0.631
 anchor_top = 0.711
 anchor_right = 0.631
 anchor_bottom = 0.711
-offset_left = -89.92
+offset_left = -97.92
 offset_top = 0.0199966
-offset_right = 0.0799866
+offset_right = 17.08
 offset_bottom = 31.02
+theme = ExtResource("4_oglpl")
 text = "Prosseguir"
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

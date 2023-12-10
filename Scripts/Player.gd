@@ -91,6 +91,8 @@ func set_max_health(health: int):
 	maxHealth = health
 	currentHealth = health
 
+
+
 func hurted():
 	currentHealth -=1
 	if currentHealth == 0:

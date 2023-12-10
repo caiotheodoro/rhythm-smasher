@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://df5nc2wutl8s8"]
+[gd_scene load_steps=5 format=3 uid="uid://df5nc2wutl8s8"]
 
 [ext_resource type="Script" path="res://Scenes/game_over.gd" id="1_p48pm"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_sxlr6"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="3_1ggx4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccspm"]
+font = ExtResource("2_sxlr6")
 font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -18,13 +22,12 @@ script = ExtResource("1_p48pm")
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 176.0
-color = Color(0.0745098, 0.141176, 0.160784, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 48.0
+offset_left = 16.0
 offset_top = 56.0
-offset_right = 267.0
+offset_right = 313.0
 offset_bottom = 114.0
 text = "Fim de jogo"
 label_settings = SubResource("LabelSettings_ccspm")
@@ -35,6 +38,7 @@ offset_left = 104.0
 offset_top = 128.0
 offset_right = 216.0
 offset_bottom = 150.0
+theme = ExtResource("3_1ggx4")
 theme_override_font_sizes/font_size = 10
 text = "Jogar novamente"
 
@@ -42,6 +46,7 @@ text = "Jogar novamente"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Score final:"
 
@@ -50,6 +55,7 @@ layout_mode = 0
 offset_left = 54.0
 offset_right = 94.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -19,6 +19,7 @@ signal boss_health_changed
 #@export var currentBoss: Dictionary  = bosses[0]
 @export var boss_health = 0
 @export var current_boss_health: int = boss_health
+@onready var animation_tree: AnimationTree = $AnimationTree
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -60,7 +61,8 @@ func hurt_by_player(multiplier: int):
 
 #func update_bar():
 #	bossHealthBar.update(current_boss_health * 100 / boss_health)
-
+func set_boss_sprite(sprite: String):
+	animation_tree[sprite] = true
 
 func set_max_health(health: int):
 	boss_health = health

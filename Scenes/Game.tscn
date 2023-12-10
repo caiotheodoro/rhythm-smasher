@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=13 format=3 uid="uid://crqqxkb3nmoyy"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="4_2dk4b"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="5_te7va"]
 [ext_resource type="AudioStream" uid="uid://di3podufbabwv" path="res://Songs/around_the_world.mp3" id="7_qy62l"]
-[ext_resource type="PackedScene" uid="uid://yylf1djaqni1" path="res://Scenes/Mob_Bomb.tscn" id="8_4113a"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="9_1ipt3"]
 [ext_resource type="PackedScene" uid="uid://db4lubqejnfxr" path="res://Scenes/Player.tscn" id="9_ajde8"]
 [ext_resource type="PackedScene" uid="uid://hltrak72pjyp" path="res://Scenes/Conductor.tscn" id="10_6dfgs"]
@@ -61,11 +60,6 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("7_qy62l")
 volume_db = -15.0
 bpm = 115
-
-[node name="MobBomb" parent="." instance=ExtResource("8_4113a")]
-visible = false
-position = Vector2(162, 83)
-scale = Vector2(0.446702, 0.69507)
 
 [node name="Player" parent="." instance=ExtResource("9_ajde8")]
 position = Vector2(120, 83)
