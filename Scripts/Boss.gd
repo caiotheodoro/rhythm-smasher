@@ -1,12 +1,23 @@
 extends CharacterBody2D
 class_name Boss
 
+class BossType:
+	var id: int
+	var music: String
+	var speed: float
+
 const SPEED = 0
 const JUMP_VELOCITY = -400.0
 
 signal boss_health_changed
 
-@export var boss_health = 1500
+#@export var bosses: Array = [
+#	{id = 0, music = "res://Songs/around_the_world.mp3", speed = 80, life = 5},
+#	{id = 1, music = "res://Songs/starboy.mp3", speed = 100, life = 15},
+#	{id = 2, music = "res://Songs/blue.mp3", speed = 140, life = 30},
+#]
+#@export var currentBoss: Dictionary  = bosses[0]
+@export var boss_health = 0
 @export var current_boss_health: int = boss_health
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -35,7 +46,14 @@ func _physics_process(delta):
 func hurt_by_player(multiplier: int):
 	current_boss_health -= 1 * multiplier
 	if current_boss_health <= 0:
-		current_boss_health = boss_health
+		get_tree().change_scene_to_file("res://Scenes/next_level.tscn")
+		var next_boss_id = Global.currentBoss.id + 1
+
+		if next_boss_id < Global.bosses.size():
+			Global.next_boss()
+			current_boss_health = Global.currentBoss.life
+		else:
+			get_tree().change_scene_to_file("res://Scenes/End.tscn")
 		
 	boss_health_changed.emit()
 #	update_bar()

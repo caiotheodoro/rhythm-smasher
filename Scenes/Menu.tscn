@@ -1,19 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://djr5d1o7ty1pb"]
+[gd_scene load_steps=4 format=3 uid="uid://djr5d1o7ty1pb"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_t3m4y"]
-[ext_resource type="Texture2D" uid="uid://bba250we1i0hg" path="res://Sprites/ui/play.png" id="2_7r7kl"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="2_ovjgq"]
+[ext_resource type="PackedScene" uid="uid://c10twjn57l7a6" path="res://Scenes/fullscreen_button.tscn" id="3_j638l"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_t3m4y")
 
-[node name="Start_Button" type="TextureButton" parent="."]
-offset_left = 62.0
-offset_top = 15.0
-offset_right = 4062.0
-offset_bottom = 3015.0
-scale = Vector2(0.05, 0.05)
-texture_normal = ExtResource("2_7r7kl")
-texture_pressed = ExtResource("2_7r7kl")
-texture_hover = ExtResource("2_7r7kl")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 179.0
 
-[connection signal="button_down" from="Start_Button" to="." method="_on_start_button_button_down"]
+[node name="Iniciar" type="Button" parent="."]
+offset_left = 125.0
+offset_top = 37.0
+offset_right = 200.0
+offset_bottom = 59.0
+theme = ExtResource("2_ovjgq")
+theme_override_font_sizes/font_size = 10
+text = "Iniciar"
+
+[node name="Instrucoes" type="Button" parent="."]
+offset_left = 125.0
+offset_top = 65.0
+offset_right = 200.0
+offset_bottom = 87.0
+theme = ExtResource("2_ovjgq")
+theme_override_font_sizes/font_size = 10
+text = "Instrucoes"
+
+[node name="Creditos" type="Button" parent="."]
+offset_left = 125.0
+offset_top = 92.0
+offset_right = 199.0
+offset_bottom = 114.0
+theme = ExtResource("2_ovjgq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Creditos"
+
+[node name="Sair" type="Button" parent="."]
+offset_left = 126.0
+offset_top = 117.0
+offset_right = 198.0
+offset_bottom = 139.0
+theme = ExtResource("2_ovjgq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Sair"
+
+[node name="fullscreen_button" parent="." instance=ExtResource("3_j638l")]
+position = Vector2(302, 166)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="Instrucoes" to="." method="_on_instrucoes_pressed"]
+[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c10twjn57l7a6"]
+
+[ext_resource type="Script" path="res://Scripts/fullscreen_button.gd" id="1_vi7kt"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="2_7wbpm"]
+[ext_resource type="Texture2D" uid="uid://cstuycwjbhntq" path="res://Sprites/ui/fullscreen.png" id="2_h868q"]
+
+[node name="fullscreen_button" type="Node2D"]
+position = Vector2(293, 156)
+script = ExtResource("1_vi7kt")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = -0.041
+anchor_top = -0.075
+anchor_right = 0.051
+anchor_bottom = 0.079
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 18.0
+offset_bottom = 16.0
+theme = ExtResource("2_7wbpm")
+text = "  "
+metadata/_edit_use_anchors_ = true
+
+[node name="Fullscreen" type="Sprite2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(0.0512695, 0.0512695)
+texture = ExtResource("2_h868q")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

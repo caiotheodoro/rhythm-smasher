@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6m0bmwau4xek"]
+
+[ext_resource type="Script" path="res://Scripts/next_level.gd" id="1_bn3ta"]
+[ext_resource type="AudioStream" uid="uid://bcd38rirqm0o8" path="res://Songs/success.mp3" id="2_5dh1x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4nurd"]
+font_size = 40
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn3ta")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 176.0
+color = Color(0.0470588, 0.156863, 0.647059, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 283.0
+offset_bottom = 114.0
+text = "Sucesso!!"
+label_settings = SubResource("LabelSettings_4nurd")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Score atual:"
+
+[node name="FinalScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 104.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5dh1x")
+autoplay = true
+
+[node name="next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.631
+anchor_top = 0.711
+anchor_right = 0.631
+anchor_bottom = 0.711
+offset_left = -89.92
+offset_top = 0.0199966
+offset_right = 0.0799866
+offset_bottom = 31.02
+text = "Prosseguir"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

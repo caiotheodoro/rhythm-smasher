@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdnh2s7hoo7tq"]
+
+[ext_resource type="Script" path="res://Scripts/instruction.gd" id="1_8gb3p"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="1_og85s"]
+[ext_resource type="Texture2D" uid="uid://by8igox0mtjuy" path="res://Sprites/game/arrow_button/left/arrow_button_left3.png" id="2_hf7q7"]
+[ext_resource type="Texture2D" uid="uid://gjyvwjo241ic" path="res://Sprites/game/arrow_button/right/arrow_button_right3.png" id="3_65t78"]
+[ext_resource type="Texture2D" uid="uid://dqsoq2prwckem" path="res://Sprites/game/arrow_button/up/arrow_button_up3.png" id="4_uwepg"]
+[ext_resource type="Texture2D" uid="uid://su2e3f2hf78g" path="res://Sprites/game/arrow_button/up/arrow_button_up2.png" id="5_anowy"]
+[ext_resource type="Texture2D" uid="uid://cq0l0dqatmd5n" path="res://Sprites/game/arrow_button/right/arrow_button_right2.png" id="6_u4w3c"]
+[ext_resource type="Texture2D" uid="uid://bgnjsw84gqelq" path="res://Sprites/game/arrow_button/left/arrow_button_left2.png" id="7_nmw7y"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8gb3p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 179.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 75.0
+offset_bottom = 172.0
+theme = ExtResource("1_og85s")
+theme_override_font_sizes/font_size = 10
+text = "Voltar"
+
+[node name="ArrowButtonLeft3" type="Sprite2D" parent="."]
+position = Vector2(226, 159)
+texture = ExtResource("2_hf7q7")
+
+[node name="ArrowButtonRight3" type="Sprite2D" parent="."]
+position = Vector2(293, 159)
+texture = ExtResource("3_65t78")
+
+[node name="ArrowButtonUp3" type="Sprite2D" parent="."]
+position = Vector2(259, 157)
+texture = ExtResource("4_uwepg")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 6.0
+offset_right = 196.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Instruções"
+
+[node name="Label" type="Label" parent="Label"]
+offset_left = -109.0
+offset_top = 35.0
+offset_right = 43.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Use as teclas de seta(teclado) ou clique (mobile) 
+para acertar o tempo em que as setas caem.
+Acertos fazem com que a vida do boss decaia,
+quanto mais acertos consecutivos, maior o dano!
+
+"
+
+[node name="ArrowButtonUp2" type="Sprite2D" parent="."]
+position = Vector2(258, 96)
+texture = ExtResource("5_anowy")
+
+[node name="ArrowButtonRight2" type="Sprite2D" parent="."]
+position = Vector2(295, 33)
+texture = ExtResource("6_u4w3c")
+
+[node name="ArrowButtonLeft2" type="Sprite2D" parent="."]
+position = Vector2(225, 148)
+texture = ExtResource("7_nmw7y")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

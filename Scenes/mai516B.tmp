@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfas55l8534um"]
+
+[ext_resource type="Texture2D" uid="uid://bynu2jrm6j6fb" path="res://Sprites/ui/cloud.png" id="2"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="3"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3")
+
+[node name="clouds" type="Node2D" parent="."]
+
+[node name="cloud" type="Sprite2D" parent="clouds"]
+position = Vector2(64.8519, 320.581)
+texture = ExtResource("2")
+
+[node name="cloud2" type="Sprite2D" parent="clouds"]
+position = Vector2(562.799, 308.397)
+texture = ExtResource("2")
+
+[node name="cloud3" type="Sprite2D" parent="clouds"]
+position = Vector2(585.578, 3.272)
+texture = ExtResource("2")
+
+[node name="cloud4" type="Sprite2D" parent="clouds"]
+position = Vector2(51.6086, 4.8612)
+texture = ExtResource("2")
+
+[node name="content" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="title" type="Label" parent="content"]
+layout_mode = 2
+text = "My Awesome Game
+"
+
+[node name="play_button" type="Button" parent="content"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"

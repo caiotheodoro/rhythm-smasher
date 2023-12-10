@@ -34,18 +34,6 @@ func _reset():
 	good = false
 	okay = false
 
-func _on_perfect_area_area_entered(area):
-	if area.is_in_group("bomb"):
-		perfect = true
-
-func _on_perfect_area_area_exited(area):
-	if area.is_in_group("bomb"):
-		perfect = false
-
-func _on_good_area_area_entered(area):
-	if area.is_in_group("bomb"):
-		good = true
-
 func _on_good_area_area_exited(area):
 	if area.is_in_group("note"):
 		good = false

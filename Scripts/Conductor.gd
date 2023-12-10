@@ -68,6 +68,7 @@ func _on_start_timer_timeout():
 func play_music(music: String):
 	var player = AudioStreamPlayer.new()
 	player.stream = load(music)
+	
 	player.play()
 	total_length = player.stream.get_length()
 	

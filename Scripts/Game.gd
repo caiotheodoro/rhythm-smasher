@@ -1,6 +1,6 @@
 extends Node2D
 
-var score = 0
+var score = Global.score
 var combo = 0
 
 var max_combo = 0
@@ -24,7 +24,6 @@ var spawn_4_beat = 0
 var lane = 0
 var rand = 0
 var note = load("res://Scenes/Note.tscn")
-var bomb = load("res://Scenes/Bomb.tscn")
 var instance
 var instance2
 
@@ -41,7 +40,7 @@ func _ready():
 	
 func _input(event):
 	if event.is_action("escape"):
-		if get_tree().change_scene_to_file("res://Scenes/Menu.tscn") != 0:
+		if get_tree().change_scene_to_file("res://Scenes/utfpr_start_screen.tscn") != 0:
 			print("erro")
 
 func _on_conductor_measure(pos):
@@ -127,9 +126,6 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
-#		instance2 = bomb.instantiate()
-#		instance2.initialize(lane)
-#		add_child(instance2)
 	if to_spawn > 1:
 		while rand == lane:
 			rand = randi() % 3
@@ -137,9 +133,6 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
-#		instance2 = note.instantiate()
-#		instance2.initialize(lane)
-#		add_child(instance2)
 
 func increment_score(by):
 	if by > 0:
@@ -161,6 +154,7 @@ func increment_score(by):
 	
 	
 	score += by * combo
+	Global.score = score
 	$Label.text = str(score)
 	if combo > 0:
 		$Combo.text = str(combo) + " strike"
@@ -174,6 +168,13 @@ func reset_combo():
 	combo = 0
 	$Combo.text = ""
 
+
+func play_music(music: String):
+	conductor.stream = load(music)
+	
+	await conductor.ready
+	
+	conductor.play()
 
 func  _process(delta):
 	$RemainTime.text = str($Conductor.get_remaining_time())

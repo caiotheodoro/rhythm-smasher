@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://bf231nn3xqto8"]
+
+[ext_resource type="Texture2D" uid="uid://bobs7n6d5em47" path="res://Sprites/ui/logo_gamepad_80x80.png" id="1_dpmdr"]
+[ext_resource type="Script" path="res://Scripts/utfpr_start_screen.gd" id="1_meqkf"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_4dhcx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq30t"]
+atlas = ExtResource("1_dpmdr")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boyx6"]
+atlas = ExtResource("1_dpmdr")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfoji"]
+atlas = ExtResource("1_dpmdr")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtt4i"]
+atlas = ExtResource("1_dpmdr")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rmy0"]
+atlas = ExtResource("1_dpmdr")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yemd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq30t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boyx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfoji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtt4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rmy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6may"]
+font = ExtResource("2_4dhcx")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_mb3er"]
+resource_name = "fade_in"
+length = 6.0
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7ytyd"]
+resource_name = "fade_out"
+length = 6.0
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11p0o"]
+_data = {
+"fade_in": SubResource("Animation_mb3er"),
+"fade_out": SubResource("Animation_7ytyd")
+}
+
+[node name="utfpr_start_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_meqkf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 179.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(157, 119)
+sprite_frames = SubResource("SpriteFrames_4yemd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 43.0
+offset_right = 199.0
+offset_bottom = 69.0
+text = "Feito na"
+label_settings = SubResource("LabelSettings_i6may")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_11p0o")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.666667)
+offset_right = 321.0
+offset_bottom = 179.0
+
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
