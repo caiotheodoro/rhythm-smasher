@@ -6,29 +6,31 @@ var okay = false
 var current_note = null
 
 @export var input = ""
+
+
+
 func _unhandled_input(event):
 	if event.is_action(input):
 		if event.is_action_pressed(input, false):
-			if current_note != null:
-				if perfect:
-					get_parent().increment_score(3)
-					current_note.destroy(3)
-				elif good:
-					get_parent().increment_score(2)
-					current_note.destroy(2)
-				elif okay:
-					get_parent().increment_score(1)
-					current_note.destroy(1)
-				_reset()
-			
-			else:
-				get_parent().increment_score(0)
-				
-		if event.is_action_pressed(input):
-			frame = 1
+			_on_button_pressed()
 		elif event.is_action_released(input):
 			$PushTimer.start()
 
+func _on_button_pressed():
+	if current_note != null:
+		if perfect:
+			get_parent().increment_score(3)
+			current_note.destroy(3)
+		elif good:
+			get_parent().increment_score(2)
+			current_note.destroy(2)
+		elif okay:
+			get_parent().increment_score(1)
+			current_note.destroy(1)
+		_reset()
+	else:
+		get_parent().increment_score(0)
+		
 func _reset():
 	current_note = null
 	perfect = false
@@ -63,3 +65,20 @@ func _on_okay_area_area_exited(area):
 
 func _on_push_timer_timeout():
 	frame = 0
+
+func _on_perfect_area_pressed():
+	_on_button_pressed()
+
+func _on_good_area_pressed():
+	_on_button_pressed()
+
+func _on_okay_area_pressed():
+	_on_button_pressed()
+
+
+func _on_okay_area_2_pressed():
+	_on_button_pressed()
+
+
+func _on_good_area_2_pressed():
+	_on_button_pressed()

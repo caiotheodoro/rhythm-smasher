@@ -44,13 +44,6 @@ script = ExtResource("3_hbovq")
 
 [node name="PerfectArea" type="Area2D" parent="."]
 
-[node name="PerfectArea" type="TouchScreenButton" parent="PerfectArea"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-4, -2)
-scale = Vector2(0.333333, 0.166667)
-texture_normal = ExtResource("1_jc6n3")
-action = "up"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea"]
 shape = SubResource("RectangleShape2D_5r5kp")
 
@@ -59,52 +52,25 @@ shape = SubResource("RectangleShape2D_5r5kp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
 shape = SubResource("RectangleShape2D_1mmes")
 
-[node name="GoodArea" type="TouchScreenButton" parent="GoodArea"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-4, 2)
-scale = Vector2(0.333333, 0.25)
-texture_normal = ExtResource("1_jc6n3")
-action = "up"
-
-[node name="GoodArea2" type="TouchScreenButton" parent="GoodArea"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-4, -8)
-scale = Vector2(0.333333, 0.25)
-texture_normal = ExtResource("1_jc6n3")
-action = "up"
-
 [node name="OkayArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
 shape = SubResource("RectangleShape2D_gbji4")
 
-[node name="OkayArea" type="TouchScreenButton" parent="OkayArea"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-4, 8)
-scale = Vector2(0.333333, 0.166667)
-texture_normal = ExtResource("1_jc6n3")
-action = "up"
-
-[node name="OkayArea2" type="TouchScreenButton" parent="OkayArea"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-4, -12)
-scale = Vector2(0.333333, 0.166667)
-texture_normal = ExtResource("1_jc6n3")
-action = "up"
-
 [node name="PushTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(16, 8)
+texture_normal = ExtResource("1_jc6n3")
+action = "up"
+
 [connection signal="area_entered" from="PerfectArea" to="." method="_on_perfect_area_area_entered"]
 [connection signal="area_exited" from="PerfectArea" to="." method="_on_perfect_area_area_exited"]
-[connection signal="pressed" from="PerfectArea/PerfectArea" to="." method="_on_perfect_area_pressed"]
 [connection signal="area_entered" from="GoodArea" to="." method="_on_good_area_area_entered"]
 [connection signal="area_exited" from="GoodArea" to="." method="_on_good_area_area_exited"]
-[connection signal="pressed" from="GoodArea/GoodArea" to="." method="_on_good_area_pressed"]
-[connection signal="pressed" from="GoodArea/GoodArea2" to="." method="_on_good_area_2_pressed"]
 [connection signal="area_entered" from="OkayArea" to="." method="_on_okay_area_area_entered"]
 [connection signal="area_exited" from="OkayArea" to="." method="_on_okay_area_area_exited"]
-[connection signal="pressed" from="OkayArea/OkayArea" to="." method="_on_okay_area_pressed"]
-[connection signal="pressed" from="OkayArea/OkayArea2" to="." method="_on_okay_area_2_pressed"]
 [connection signal="timeout" from="PushTimer" to="." method="_on_push_timer_timeout"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

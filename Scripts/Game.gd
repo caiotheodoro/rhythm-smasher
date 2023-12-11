@@ -142,8 +142,10 @@ func increment_score(by):
 		boss.hurt_by_player(combo)
 		bossHealthBar.update(boss.current_boss_health * 100 / boss.boss_health)
 	else:
-		player.hurted()
-		combo = 0
+		match OS.get_name():
+			"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD","macOS","Windows":
+				player.hurted()
+				combo = 0
 	
 	if by == 3:
 		great += 1
