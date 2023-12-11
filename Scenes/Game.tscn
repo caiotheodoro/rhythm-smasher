@@ -97,5 +97,23 @@ texture_progress = ExtResource("13_r2pbh")
 script = ExtResource("11_oetlg")
 boss = NodePath("../../Boss")
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="BossHability" type="Label" parent="."]
+offset_left = 103.0
+offset_top = -3.0
+offset_right = 143.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.67451, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="TextTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Measure" from="Conductor" to="." method="_on_conductor_measure"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

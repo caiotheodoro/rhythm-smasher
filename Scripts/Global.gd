@@ -6,13 +6,31 @@ var great = 0
 var good = 0
 var okay = 0
 var missed = 0
-var grade = "N"
 var _is_full_screen = false
 
 var bosses: Array = [
-	{id = 0, music = "res://Songs/around_the_world.mp3", speed = 80, life = 6,sprite= "parameters/conditions/idle"},
-	{id = 1, music = "res://Songs/starboy.ogg", speed = 100, life = 1,sprite= "parameters/conditions/idle2"},
-	{id = 2, music = "res://Songs/blue.ogg", speed = 140, life = 1,sprite= "parameters/conditions/idle3"},
+	{
+		id = 0, 
+		music = "res://Songs/around_the_world.mp3",
+		 speed = 80,
+		 life = 1420,
+		sprite= "parameters/conditions/idle",
+		 timer = {speed = 80, when=1, name="" }
+		},
+	{id = 1,
+	music = "res://Songs/starboy.ogg", 
+	speed = 100,
+	life = 2200,
+	sprite= "parameters/conditions/idle2",
+	timer = {speed = 140, when=40, name="O boss usou a habilida de aceleração!" }
+	},
+	{id = 2, 
+	music = "res://Songs/blue.ogg",
+	 speed = 120,
+	 life = 3520,
+	sprite= "parameters/conditions/idle3",
+	timer = {speed = 180, when= 60, name="O boss usou a habilida de aceleração!" }
+	},
 ]
 var currentBoss: Dictionary  = bosses[0]
 var currBossIndex = 0
@@ -25,21 +43,3 @@ func next_boss():
 	else:
 		print("fim")
 
-func set_score(new):
-	score = new
-	if score > 250000:
-		grade = "SSS"
-	elif score > 200000:
-		grade = "SS"
-	elif score > 150000:
-		grade = "S"
-	elif score > 130000:
-		grade = "A"
-	elif score > 115000:
-		grade = "B"
-	elif score > 100000:
-		grade = "C"
-	elif score > 85000:
-		grade = "D"
-	else:
-		grade = "F"

@@ -31,6 +31,8 @@ var instance2
 @onready var boss = $Boss
 @onready var bossHealthBar = $CanvasLayer2/bossHealthBar
 @onready var conductor = $Conductor
+@onready var bossHabilityText = $BossHability
+@onready var textTimer = $TextTimer
 func _ready():
 	randomize()
 	$Conductor.play_with_beat_offset(6)
@@ -178,3 +180,15 @@ func play_music(music: String):
 
 func  _process(delta):
 	$RemainTime.text = str($Conductor.get_remaining_time())
+
+#
+func _on_timer_timeout():
+	print(Global.currentBoss.timer.speed)
+	$Conductor.change_speed_ingame(Global.currentBoss.timer.speed)
+	bossHabilityText.text = Global.currentBoss.timer.name
+	textTimer.start()
+	
+
+
+func _on_text_timer_timeout():
+	bossHabilityText.text = ""

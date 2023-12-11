@@ -77,6 +77,9 @@ func change_speed(speed: float):
 	$StartTimer.wait_time = sec_per_beat
 	$StartTimer.start()
 	
+func change_speed_ingame(speed: float):
+	sec_per_beat = 60.0 / speed
+	
 func get_remaining_time():
 	var remaining_seconds = total_length - song_position
 	var minutes = int(remaining_seconds / 60)

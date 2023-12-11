@@ -28,6 +28,7 @@ theme_override_font_sizes/font_size = 10
 text = "Score atual:"
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 56.0
 offset_right = 244.0
