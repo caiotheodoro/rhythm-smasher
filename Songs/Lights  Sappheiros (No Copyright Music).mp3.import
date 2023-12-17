@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dp27kgc8u15r1"
+path="res://.godot/imported/Lights  Sappheiros (No Copyright Music).mp3-d576263896114be0c849ac43b1219741.mp3str"
+
+[deps]
+
+source_file="res://Songs/Lights  Sappheiros (No Copyright Music).mp3"
+dest_files=["res://.godot/imported/Lights  Sappheiros (No Copyright Music).mp3-d576263896114be0c849ac43b1219741.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

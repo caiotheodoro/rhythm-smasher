@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4x2gihj2fpxa"
+path="res://.godot/imported/home head First-[AudioTrimmer.com].mp3-3171ed432d0014af146870718c5cb13d.mp3str"
+
+[deps]
+
+source_file="res://Songs/home head First-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/home head First-[AudioTrimmer.com].mp3-3171ed432d0014af146870718c5cb13d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

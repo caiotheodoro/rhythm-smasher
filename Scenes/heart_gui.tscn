@@ -6,12 +6,12 @@
 [node name="heartGUI" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(6, 5)
-offset_right = 6.0
-offset_bottom = 5.0
+offset_right = 12.0
+offset_bottom = 11.0
 script = ExtResource("1_aqn0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.375, 0.3125)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_q51sh")
 centered = false
 hframes = 5

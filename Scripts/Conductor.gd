@@ -85,3 +85,9 @@ func get_remaining_time():
 	var minutes = int(remaining_seconds / 60)
 	var seconds = int(int(remaining_seconds) % 60)
 	return str(minutes) + ":" + str(seconds).pad_zeros(2)
+
+
+
+func stop_music():
+	stream_paused = true
+	stop()

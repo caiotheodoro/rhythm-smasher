@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqmff3ywir7xm"
+path="res://.godot/imported/veno retro dreams.mp3-66e8e9805a624d228f42ea1816a67a46.mp3str"
+
+[deps]
+
+source_file="res://Songs/veno retro dreams.mp3"
+dest_files=["res://.godot/imported/veno retro dreams.mp3-66e8e9805a624d228f42ea1816a67a46.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

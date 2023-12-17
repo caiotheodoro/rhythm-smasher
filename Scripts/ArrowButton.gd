@@ -4,15 +4,21 @@ var perfect = false
 var good = false
 var okay = false
 var current_note = null
+var is_touching = false  # New variable to track touch state
 
 @export var input = ""
-
-
-
 func _unhandled_input(event):
 	if event.is_action(input):
-		if event.is_action_pressed(input, false):
-			_on_button_pressed()
+		if event is InputEventScreenTouch:
+			is_touching = event.pressed  # Set the touch state
+
+			if is_touching:  # Handle only pressed event
+				_on_button_pressed()
+		elif event is InputEventKey and event.pressed:
+			match event.keycode:
+				KEY_LEFT, KEY_RIGHT, KEY_UP:
+					_on_button_pressed()
+			
 		elif event.is_action_released(input):
 			$PushTimer.start()
 
@@ -30,7 +36,7 @@ func _on_button_pressed():
 		_reset()
 	else:
 		get_parent().increment_score(0)
-		
+
 func _reset():
 	current_note = null
 	perfect = false
@@ -75,10 +81,8 @@ func _on_good_area_pressed():
 func _on_okay_area_pressed():
 	_on_button_pressed()
 
-
 func _on_okay_area_2_pressed():
 	_on_button_pressed()
-
 
 func _on_good_area_2_pressed():
 	_on_button_pressed()

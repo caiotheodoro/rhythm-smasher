@@ -97,14 +97,11 @@ wait_time = 0.05
 one_shot = true
 
 [connection signal="area_entered" from="PerfectArea" to="." method="_on_perfect_area_area_entered"]
-[connection signal="area_exited" from="PerfectArea" to="." method="_on_perfect_area_area_exited"]
 [connection signal="pressed" from="PerfectArea/PerfectArea" to="." method="_on_perfect_area_pressed"]
 [connection signal="area_entered" from="GoodArea" to="." method="_on_good_area_area_entered"]
-[connection signal="area_exited" from="GoodArea" to="." method="_on_good_area_area_exited"]
 [connection signal="pressed" from="GoodArea/GoodArea" to="." method="_on_good_area_pressed"]
 [connection signal="pressed" from="GoodArea/GoodArea2" to="." method="_on_good_area_2_pressed"]
 [connection signal="area_entered" from="OkayArea" to="." method="_on_okay_area_area_entered"]
-[connection signal="area_exited" from="OkayArea" to="." method="_on_okay_area_area_exited"]
 [connection signal="pressed" from="OkayArea/OkayArea" to="." method="_on_okay_area_pressed"]
 [connection signal="pressed" from="OkayArea/OkayArea2" to="." method="_on_okay_area_2_pressed"]
 [connection signal="timeout" from="PushTimer" to="." method="_on_push_timer_timeout"]

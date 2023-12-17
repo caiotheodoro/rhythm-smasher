@@ -1,7 +1,7 @@
 extends Area2D
 
 const TARGET_Y = 164
-const SPAWN_Y = -16
+const SPAWN_Y = -40
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
 const LEFT_LANE_SPAWN = Vector2(10, SPAWN_Y)
@@ -46,13 +46,13 @@ func destroy(score):
 	hit = true
 	if score == 3:
 		$Node2D/Label.text = "OTIMO!!"
-		$Node2D/Label.modulate = Color("f6d6bd")
+		$Node2D/Label.modulate = Color("ff0000")
 	elif score == 2:
 		$Node2D/Label.text = "BOM"
-		$Node2D/Label.modulate = Color("c3a38a")
+		$Node2D/Label.modulate = Color("b93434")
 	elif score == 1:
 		$Node2D/Label.text = "OK"
-		$Node2D/Label.modulate = Color("997577")
+		$Node2D/Label.modulate = Color("6e3636")
 		
 
 

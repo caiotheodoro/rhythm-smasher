@@ -16,6 +16,8 @@ var song_position_in_beats = 0
 var last_spawned_beat = 0
 var sec_per_beat = 60.0 / bpm
 
+var should_spawn = true
+
 var spawn_1_beat = 0
 var spawn_2_beat = 0
 var spawn_3_beat = 1
@@ -33,9 +35,25 @@ var instance2
 @onready var conductor = $Conductor
 @onready var bossHabilityText = $BossHability
 @onready var textTimer = $TextTimer
+@onready var notesTimer = $NotesTimer
+@onready var error = $Error
+@onready var bossDamage = $Damage
+@onready var anim = $AnimatedSprite2D
+@onready var damageTimer = $Damage/DamageTimer
+@onready var explosion = $Boss/Explosion
+
+@onready var au = $ArrowUp
+@onready var al = $ArrowLeft
+@onready var ar = $ArrowRight
 func _ready():
+	explosion.visible = false
+	au.visible = true
+	ar.visible = true
+	al.visible = true
 	randomize()
-	$Conductor.play_with_beat_offset(6)
+	should_spawn = true
+	$Conductor.play_with_beat_offset(5)
+	anim.visible = false
 	
 	# This is just for debugging purposes
 	#$Conductor.play_from_beat(360, 8)
@@ -57,12 +75,12 @@ func _on_conductor_measure(pos):
 		
 func _on_conductor_beat(pos):
 	song_position_in_beats = pos
-	if song_position_in_beats > 36:
+	if song_position_in_beats > Global.currentBoss.conductor.first:
 		spawn_1_beat = 1
 		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 1
-	if song_position_in_beats > 98:
+	if song_position_in_beats > 78:
 		spawn_1_beat = 2
 		spawn_2_beat = 0
 		spawn_3_beat = 1
@@ -138,14 +156,20 @@ func _spawn_notes(to_spawn):
 
 func increment_score(by):
 	if by > 0:
+		anim.play("default")
+		damageTimer.start()
+		anim.visible = true
+		notesTimer.start()
 		combo += 1
+		boss.set_end_boss_callback(end_boss)
 		boss.hurt_by_player(combo)
+		bossDamage.text = str(-combo)
 		bossHealthBar.update(boss.current_boss_health * 100 / boss.boss_health)
+			
 	else:
-		match OS.get_name():
-			"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD","macOS","Windows":
-				player.hurted()
-				combo = 0
+		error.play()
+		player.hurted()
+		combo = 0
 	
 	if by == 3:
 		great += 1
@@ -166,7 +190,13 @@ func increment_score(by):
 			max_combo = combo
 	else:
 		$Combo.text = ""
+	
 
+func end_boss():
+	au.visible = false
+	ar.visible = false
+	al.visible = false
+	conductor.stop()
 
 func reset_combo():
 	combo = 0
@@ -194,3 +224,13 @@ func _on_timer_timeout():
 
 func _on_text_timer_timeout():
 	bossHabilityText.text = ""
+
+
+func _on_notes_timer_timeout():
+	anim.visible = false
+	anim.pause()
+
+
+func _on_damage_timer_timeout():
+	bossDamage.text = ""
+

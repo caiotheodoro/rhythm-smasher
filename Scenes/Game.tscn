@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=24 format=3 uid="uid://crqqxkb3nmoyy"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
@@ -7,11 +7,71 @@
 [ext_resource type="AudioStream" uid="uid://di3podufbabwv" path="res://Songs/around_the_world.mp3" id="7_qy62l"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="9_1ipt3"]
 [ext_resource type="PackedScene" uid="uid://db4lubqejnfxr" path="res://Scenes/Player.tscn" id="9_ajde8"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="9_sfbp7"]
 [ext_resource type="PackedScene" uid="uid://hltrak72pjyp" path="res://Scenes/Conductor.tscn" id="10_6dfgs"]
 [ext_resource type="PackedScene" uid="uid://bqp4o0u3e25py" path="res://Scenes/Boss.tscn" id="10_b3qv8"]
 [ext_resource type="Script" path="res://Scripts/boss_health_bar.gd" id="11_oetlg"]
 [ext_resource type="Texture2D" uid="uid://mtvvpxych28" path="res://Sprites/healthbarUnder.png" id="12_qae2g"]
 [ext_resource type="Texture2D" uid="uid://bvmkkwixkwrk3" path="res://Sprites/healthbarProgress.png" id="13_r2pbh"]
+[ext_resource type="Texture2D" uid="uid://bre4qy416luri" path="res://Sprites/song-animation.png" id="14_kcg28"]
+[ext_resource type="AudioStream" uid="uid://b008vmpqea8om" path="res://Songs/error.mp3" id="15_i50sj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifsfu"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(0, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxwgf"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(120, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vquqb"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(240, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14w1q"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(360, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xbol"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(480, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjrau"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(600, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gp13"]
+atlas = ExtResource("14_kcg28")
+region = Rect2(720, 0, 120, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06cbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifsfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxwgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vquqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14w1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xbol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjrau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gp13")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node2D"]
 position = Vector2(22, 86)
@@ -34,10 +94,10 @@ input = "right"
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
 offset_left = 83.0
-offset_top = -10.0
+offset_top = -24.0
 offset_right = 123.0
-offset_bottom = 18.0
-scale = Vector2(0.350785, 0.417476)
+offset_bottom = 4.0
+scale = Vector2(0.47356, 0.547937)
 theme_override_colors/font_color = Color(0.278431, 0.137255, 0.862745, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 30
@@ -47,10 +107,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Combo" type="Label" parent="."]
 offset_left = 83.0
-offset_top = 6.0
+offset_top = -8.0
 offset_right = 175.0
-offset_bottom = 20.0
-scale = Vector2(0.570442, 0.661765)
+offset_bottom = 6.0
+scale = Vector2(0.78025, 1.13445)
 theme_override_colors/font_color = Color(0.176471, 0.290196, 0.843137, 1)
 theme_override_fonts/font = ExtResource("9_1ipt3")
 theme_override_font_sizes/font_size = 16
@@ -62,26 +122,28 @@ volume_db = -15.0
 bpm = 115
 
 [node name="Player" parent="." instance=ExtResource("9_ajde8")]
-position = Vector2(120, 83)
+position = Vector2(95, 72)
+scale = Vector2(1.495, 1.31687)
 
 [node name="RemainTime" type="Label" parent="."]
 offset_left = 263.0
-offset_top = 3.0
+offset_top = -20.0
 offset_right = 391.0
-offset_bottom = 25.0
+offset_bottom = 2.0
+theme_override_fonts/font = ExtResource("9_sfbp7")
 theme_override_font_sizes/font_size = 7
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 232.0
-offset_top = 3.0
+offset_top = -21.0
 offset_right = 272.0
-offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("9_sfbp7")
 theme_override_font_sizes/font_size = 8
 text = "Tempo:"
 
 [node name="Boss" parent="." instance=ExtResource("10_b3qv8")]
-position = Vector2(176, 76)
-scale = Vector2(1.02489, 0.932597)
+position = Vector2(224, 64)
+scale = Vector2(-0.916535, 0.936263)
 floor_stop_on_slope = false
 floor_block_on_wall = false
 
@@ -107,13 +169,41 @@ offset_top = -3.0
 offset_right = 143.0
 offset_bottom = 20.0
 theme_override_colors/font_color = Color(0.67451, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_sfbp7")
 theme_override_font_sizes/font_size = 10
 
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(159, 73)
+scale = Vector2(0.78125, 0.78125)
+sprite_frames = SubResource("SpriteFrames_06cbe")
+frame = 6
+frame_progress = 0.411824
+
+[node name="NotesTimer" type="Timer" parent="."]
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_i50sj")
+
+[node name="Damage" type="Label" parent="."]
+show_behind_parent = true
+offset_left = 248.0
+offset_top = 45.0
+offset_right = 288.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.929412, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_sfbp7")
+theme_override_font_sizes/font_size = 8
+
+[node name="DamageTimer" type="Timer" parent="Damage"]
+wait_time = 0.8
+
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Measure" from="Conductor" to="." method="_on_conductor_measure"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
+[connection signal="timeout" from="NotesTimer" to="." method="_on_notes_timer_timeout"]
+[connection signal="timeout" from="Damage/DamageTimer" to="." method="_on_damage_timer_timeout"]

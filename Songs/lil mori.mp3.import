@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0ym0hqojaet6"
+path="res://.godot/imported/lil mori.mp3-94bb89df7c58313afbfef30d4d30e88e.mp3str"
+
+[deps]
+
+source_file="res://Songs/lil mori.mp3"
+dest_files=["res://.godot/imported/lil mori.mp3-94bb89df7c58313afbfef30d4d30e88e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

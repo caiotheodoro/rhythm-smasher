@@ -39,7 +39,8 @@ text = "Arte & Código:
 Caio Theodoro
 
 Músicas & Efeitos:
-Blue (Da Ba Dee) [8 Bit Tribute to Eiffel 65] - 8 Bit Universe
-Starboy [8 Bit Tribute to Eiffel 65] - 8 Bit Universe"
+ULTRAWAVE - OCEANDRIVE
+Home - Head First
+LIL MORĪ – プラネットx [Synthwave]"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6m0bmwau4xek"]
+
+[ext_resource type="Script" path="res://Scripts/next_level.gd" id="1_bn3ta"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_5x61y"]
+[ext_resource type="AudioStream" uid="uid://cy1p761pyxned" path="res://Songs/wait.mp3" id="3_0vfem"]
+[ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="4_oglpl"]
+[ext_resource type="Texture2D" uid="uid://gvb2pej15m8f" path="res://Sprites/boards/player.png" id="5_vu3cg"]
+[ext_resource type="Texture2D" uid="uid://dq7cprpmqf6f7" path="res://Sprites/boards/violoncelo.png" id="6_saneu"]
+[ext_resource type="Texture2D" uid="uid://bk35mi5egaof0" path="res://Sprites/versus.png" id="7_kbcit"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn3ta")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 176.0
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 8.0
+offset_right = 185.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5x61y")
+theme_override_font_sizes/font_size = 10
+text = "Score atual:"
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 209.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5x61y")
+theme_override_font_sizes/font_size = 16
+text = "Sucesso!!"
+
+[node name="FinalScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 6.0
+offset_right = 224.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0vfem")
+autoplay = true
+
+[node name="next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.631
+anchor_top = 0.711
+anchor_right = 0.631
+anchor_bottom = 0.711
+offset_left = -81.92
+offset_top = 16.02
+offset_right = -1.92
+offset_bottom = 36.02
+theme = ExtResource("4_oglpl")
+theme_override_font_sizes/font_size = 12
+text = "Batalhar!"
+
+[node name="PlayerImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 136.0
+texture = ExtResource("5_vu3cg")
+
+[node name="BossImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 40.0
+offset_right = 280.0
+offset_bottom = 136.0
+texture = ExtResource("6_saneu")
+
+[node name="Versus" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 64.0
+offset_right = 193.0
+offset_bottom = 128.0
+texture = ExtResource("7_kbcit")
+
+[node name="bossName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 33.0
+offset_right = 260.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5x61y")
+theme_override_font_sizes/font_size = 10
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

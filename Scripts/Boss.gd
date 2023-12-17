@@ -11,8 +11,10 @@ const JUMP_VELOCITY = -400.0
 
 signal boss_health_changed
 
+	
+
 #@export var bosses: Array = [
-#	{id = 0, music = "res://Songs/around_the_world.mp3", speed = 80, life = 5},
+#	{id = 0, music = "res://Songs/lights.mp3", speed = 80, life = 5},
 #	{id = 1, music = "res://Songs/starboy.mp3", speed = 100, life = 15},
 #	{id = 2, music = "res://Songs/blue.mp3", speed = 140, life = 30},
 #]
@@ -20,10 +22,22 @@ signal boss_health_changed
 @export var boss_health = 0
 @export var current_boss_health: int = boss_health
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var explosionTime = $ExplosionTime
+@onready var explosion = $Explosion
+@onready var defeatText = $DefeatText
+@onready var bossBody = $Body
+@onready var successAudio = $Success
+@onready var nextScene = $NextScene
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var end_boss_callback: Callable
 
 
+func _ready():
+	bossBody.visible = true
+	defeatText.visible = false
+	
+	
 func _physics_process(delta):
 	# Add the gravity.
 #	if not is_on_floor():
@@ -44,7 +58,17 @@ func _physics_process(delta):
 func hurt_by_player(multiplier: int):
 	current_boss_health -= 1 * multiplier
 	if current_boss_health <= 0:
-		get_tree().change_scene_to_file("res://Scenes/next_level.tscn")
+		explosion.visible = true
+		defeatText.visible = true
+		explosionTime.start()
+		explosion.play("default")
+		successAudio.play()
+		nextScene.start()
+		if end_boss_callback != null:
+			end_boss_callback.call()
+		
+		
+#		get_tree().change_scene_to_file("res://Scenes/next_level.tscn")
 		var next_boss_id = Global.currentBoss.id + 1
 
 		if next_boss_id < Global.bosses.size():
@@ -64,3 +88,15 @@ func set_boss_sprite(sprite: String):
 func set_max_health(health: int):
 	boss_health = health
 	current_boss_health = health
+
+
+func _on_explosion_time_timeout():
+	bossBody.visible = false
+	explosion.visible = false
+	
+
+func _on_next_scene_timeout():
+	get_tree().change_scene_to_file("res://Scenes/next_level.tscn")
+	
+func set_end_boss_callback(callback: Callable):
+	end_boss_callback = callback

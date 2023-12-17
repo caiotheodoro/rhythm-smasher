@@ -150,7 +150,6 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.666667)
 offset_right = 321.0
 offset_bottom = 179.0
 

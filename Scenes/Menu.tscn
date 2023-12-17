@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://djr5d1o7ty1pb"]
+[gd_scene load_steps=12 format=3 uid="uid://djr5d1o7ty1pb"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_t3m4y"]
 [ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="2_ovjgq"]
 [ext_resource type="PackedScene" uid="uid://c10twjn57l7a6" path="res://Scenes/fullscreen_button.tscn" id="3_j638l"]
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="4_8e3md"]
+[ext_resource type="AudioStream" uid="uid://ceunhl5l845cr" path="res://Songs/start.mp3" id="5_nv0ya"]
+[ext_resource type="Texture2D" uid="uid://b3w2xjw6ykfv1" path="res://Sprites/song-animation-infinite.png" id="6_a7bph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mr8f"]
+atlas = ExtResource("6_a7bph")
+region = Rect2(0, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aytht"]
+atlas = ExtResource("6_a7bph")
+region = Rect2(120, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7by5"]
+atlas = ExtResource("6_a7bph")
+region = Rect2(240, 0, 120, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rare"]
+atlas = ExtResource("6_a7bph")
+region = Rect2(360, 0, 120, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6h8ui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mr8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aytht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7by5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rare")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_t3m4y")
@@ -63,6 +101,22 @@ offset_bottom = 47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_8e3md")
 text = "Rhytmn Smasher"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nv0ya")
+autoplay = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(60, 88)
+sprite_frames = SubResource("SpriteFrames_6h8ui")
+frame = 1
+frame_progress = 0.644403
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(200, -3)
+sprite_frames = SubResource("SpriteFrames_6h8ui")
+frame = 1
+frame_progress = 0.644403
 
 [connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="Instrucoes" to="." method="_on_instrucoes_pressed"]

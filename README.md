@@ -23,3 +23,21 @@ Jogo de ritmo onde o jogador deve acertar as notas musicais que aparecem na tela
 ### Elementos de UI:
 - **Janela de previsão de movimentação e area de ativação** -  mostra as
 proximas sequencias e quando é possivel usar o comando de defesa
+
+
+
+### NOTAS DE ATUALIZAÇÃO:
+- **Versão 0.1** - 15/12/2023
+  - Ajustado o tamanho da janela do jogo
+  - Ajustado comportamento touch das notas, que antes não contabilizavam score e causava dano ao player
+  - Ajustada dispersão do conteúdo do jogo, utilizando melhor o espaço da tela
+  - Alteradas as musicas utilizadas no jogo para musicas mais temáticas (tema synthwave) e open source
+  - Alterado o comportamento das notas,  para manter mais fiel possível o ritmo da música
+  - nivelamento da dificuldade das musicas
+  - Adicionado um novo nível de dificuldade e boss
+  - Alterado a aparência do boss e do player, visando maior fidelidade ao tema do jogo
+  - Adicionado "disparos" de nota ao acerto do player, para melhorar a sensação de acerto e dano ao boss
+  - Adicionado indicativos de dano ao boss, informando o dano causado pelo player a cada acerto
+  - Reformulação das artes e animações do jogo
+  - Adicionada animações de transição entre as fases
+  

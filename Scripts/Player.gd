@@ -56,26 +56,11 @@ func update_animation_parameters():
 		animation_tree["parameters/conditions/idle"] = true
 	else:
 		animation_tree["parameters/conditions/idle"] = false
-			
-	if(Input.is_action_just_pressed("jump")):
-		animation_tree["parameters/conditions/jump"] = true
-	else:
-		animation_tree["parameters/conditions/jump"] = false
 		
-	if(Input.is_action_just_pressed("right_dash")):
+	if(Input.is_action_just_pressed("right_dash") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("jump")):
 		animation_tree["parameters/conditions/right"] = true
 	else:
 		animation_tree["parameters/conditions/right"] = false
-		
-	if(Input.is_action_just_pressed("hide")):
-		animation_tree["parameters/conditions/hide"] = true
-	else:
-		animation_tree["parameters/conditions/hide"] = false
-	
-	if(Input.is_action_just_pressed("left")):
-		animation_tree["parameters/conditions/left"] = true
-	else:
-		animation_tree["parameters/conditions/left"] = false
 			
 	if(direction != Vector2.ZERO):
 		animation_tree["parameters/Jump/blend_position"] = direction

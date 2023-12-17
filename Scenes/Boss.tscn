@@ -1,93 +1,45 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqp4o0u3e25py"]
+[gd_scene load_steps=42 format=3 uid="uid://bqp4o0u3e25py"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_tkyh6"]
-[ext_resource type="Texture2D" uid="uid://bylwn08b7lbk6" path="res://Sprites/bosses/l0_sprite_1-sheet.png" id="2_5h0fh"]
-[ext_resource type="Texture2D" uid="uid://cptuwnogm80ro" path="res://Sprites/bosses/guardbot1-sheet.png" id="3_qguit"]
-[ext_resource type="Texture2D" uid="uid://b362ruqck8lc6" path="res://Sprites/bosses/crow_idle-sheet.png" id="4_kfvx3"]
+[ext_resource type="Texture2D" uid="uid://dweqdl0wh6g4g" path="res://Sprites/bosses/crow-boss.png" id="2_dx3cp"]
+[ext_resource type="Texture2D" uid="uid://bqflyirpbpkrg" path="res://Sprites/bosses/demon_idle.png" id="3_nocvw"]
+[ext_resource type="Texture2D" uid="uid://cqjqtyfohtgyk" path="res://Sprites/explosion.png" id="5_2svjo"]
+[ext_resource type="Texture2D" uid="uid://mf53vaojmp7a" path="res://Sprites/bosses/violoncelo-boss.png" id="5_ul022"]
+[ext_resource type="AudioStream" uid="uid://mj6j83yumjje" path="res://Songs/success-new.mp3" id="6_qfjsh"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="7_ao84y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dac0"]
 radius = 13.0
 height = 50.0
 
-[sub_resource type="Animation" id="Animation_exthq"]
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_5h0fh")]
-}
-
 [sub_resource type="Animation" id="Animation_mia15"]
 resource_name = "boss2_idle"
+length = 0.6
 loop_mode = 1
-step = 0.5
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:hframes")
+tracks/0/path = NodePath("Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [ExtResource("3_nocvw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:texture")
+tracks/1/path = NodePath("Body:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_qguit")]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -108,124 +60,175 @@ tracks/3/path = NodePath("Body:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_tpwvk"]
-resource_name = "boss3_idle"
-loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_kfvx3")]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_nsyfm"]
 resource_name = "boss_idle"
+length = 0.65
 loop_mode = 1
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:hframes")
+tracks/0/path = NodePath("Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ul022")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_p87ms"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:vframes")
+tracks/1/path = NodePath("Body:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [ExtResource("2_dx3cp")]
+}
+
+[sub_resource type="Animation" id="Animation_s6j1n"]
+resource_name = "boss_idle_3"
+length = 0.65
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dx3cp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Body:frame")
+tracks/2/path = NodePath("Body:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Body:texture")
+tracks/3/path = NodePath("Body:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_5h0fh")]
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wl38"]
 _data = {
-"RESET": SubResource("Animation_exthq"),
+"RESET": SubResource("Animation_p87ms"),
 "boss2_idle": SubResource("Animation_mia15"),
-"boss3_idle": SubResource("Animation_tpwvk"),
-"boss_idle": SubResource("Animation_nsyfm")
+"boss_idle": SubResource("Animation_nsyfm"),
+"boss_idle_3": SubResource("Animation_s6j1n")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_taye1"]
+animation = &"boss_idle_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_05wid"]
+animation = &"boss_idle_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxmkp"]
+animation = &"boss_idle_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_btc8h"]
+animation = &"boss_idle_3"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7x6t7"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_taye1")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_05wid")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qxmkp")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_btc8h")
+blend_point_3/pos = Vector2(1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flpjq"]
 animation = &"boss_idle"
@@ -271,28 +274,6 @@ blend_point_2/pos = Vector2(0, -0.9)
 blend_point_3/node = SubResource("AnimationNodeAnimation_yco2r")
 blend_point_3/pos = Vector2(1, 0)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8d2rh"]
-animation = &"boss3_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hymf"]
-animation = &"boss3_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xewu"]
-animation = &"boss3_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3n4s5"]
-animation = &"boss3_idle"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ckkob"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_8d2rh")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_2hymf")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_5xewu")
-blend_point_2/pos = Vector2(0, -0.9)
-blend_point_3/node = SubResource("AnimationNodeAnimation_3n4s5")
-blend_point_3/pos = Vector2(1, 0)
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2pxth"]
 advance_mode = 2
 advance_condition = &"idle"
@@ -301,27 +282,92 @@ advance_condition = &"idle"
 advance_mode = 2
 advance_condition = &"idle2"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qgsty"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxkoh"]
 advance_mode = 2
 advance_condition = &"idle3"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7542i"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_0p0fa")
 states/Idle/position = Vector2(327, 128)
+"states/Idle 3/node" = SubResource("AnimationNodeBlendSpace2D_7x6t7")
+"states/Idle 3/position" = Vector2(261.212, 195.3)
 states/Idle_2/node = SubResource("AnimationNodeBlendSpace2D_423th")
 states/Idle_2/position = Vector2(327, 31)
-states/idle_3/node = SubResource("AnimationNodeBlendSpace2D_ckkob")
-states/idle_3/position = Vector2(284, 188)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2pxth"), "Start", "Idle_2", SubResource("AnimationNodeStateMachineTransition_mjkyd"), "Start", "idle_3", SubResource("AnimationNodeStateMachineTransition_qgsty")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2pxth"), "Start", "Idle_2", SubResource("AnimationNodeStateMachineTransition_mjkyd"), "Start", "Idle 3", SubResource("AnimationNodeStateMachineTransition_qxkoh")]
+graph_offset = Vector2(-502.788, 107.3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnqt3"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hstnf"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(120, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3dow"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(240, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01wxr"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(360, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kar5"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(480, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17pdl"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(600, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgo5w"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(720, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn3qp"]
+atlas = ExtResource("5_2svjo")
+region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahmcd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnqt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hstnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3dow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01wxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kar5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17pdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgo5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn3qp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_tkyh6")
 
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
-scale = Vector2(1.10157, 1.18208)
-texture = ExtResource("2_5h0fh")
+texture = ExtResource("2_dx3cp")
 hframes = 5
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 4)
@@ -340,5 +386,34 @@ parameters/conditions/idle = false
 parameters/conditions/idle2 = false
 parameters/conditions/idle3 = false
 parameters/Idle/blend_position = Vector2(0, 0)
+"parameters/Idle 3/blend_position" = Vector2(0, 0)
 parameters/Idle_2/blend_position = Vector2(-0.996584, -0.0212766)
-parameters/idle_3/blend_position = Vector2(0, 0)
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_ahmcd")
+frame = 4
+frame_progress = 0.116904
+
+[node name="ExplosionTime" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="Success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qfjsh")
+
+[node name="DefeatText" type="Label" parent="."]
+offset_left = 159.0
+offset_top = -42.0
+offset_right = 351.0
+offset_bottom = -19.0
+scale = Vector2(-1.16, 1)
+theme_override_fonts/font = ExtResource("7_ao84y")
+theme_override_font_sizes/font_size = 10
+text = "Voce eliminou o inimigo!"
+
+[node name="NextScene" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="ExplosionTime" to="." method="_on_explosion_time_timeout"]
+[connection signal="timeout" from="NextScene" to="." method="_on_next_scene_timeout"]
