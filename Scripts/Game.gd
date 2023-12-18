@@ -47,7 +47,7 @@ var instance2
 @onready var anim = $AnimatedSprite2D
 @onready var damageTimer = $Damage/DamageTimer
 @onready var explosion = $Boss/Explosion
-
+@onready var animTree = $Player/AnimationTree
 @onready var au = $ArrowUp
 @onready var al = $ArrowLeft
 @onready var ar = $ArrowRight
@@ -166,6 +166,7 @@ func _spawn_notes(to_spawn):
 	
 
 func increment_score(by):
+	animTree["parameters/conditions/right"] = true
 	if by > 0:
 		anim.play("default")
 		damageTimer.start()
@@ -182,8 +183,8 @@ func increment_score(by):
 			error.play()
 			player.hurted()
 			combo = 0
-		if Global.doubleDamage:
-			player.hurted()
+			if Global.doubleDamage:
+				player.hurted()
 	
 	if by == 3:
 		great += 1
