@@ -18,7 +18,7 @@ var bosses: Array = [
 	name= "Gatuncio",
 	music = "res://Songs/home head First.mp3",
 	 speed = 72,
-	 life = 1, #5500
+	 life = 5500, #5500
 	sprite= "parameters/conditions/idle",
 	 timer = {speed = 72, when=1, name="" },
 	conductor= {first = 30, second = 65, third = 80},
@@ -33,7 +33,7 @@ var bosses: Array = [
 	name= "Bola-teria",
 	music = "res://Songs/lil mori.mp3",
 	 speed = 95,
-	 life = 1, #4600
+	 life = 4600, #4600
 	sprite= "parameters/conditions/idle2",
 	 timer = {speed = 105, when=30, name="" },
 	conductor= {first = 36, second = 65, third = 80},
