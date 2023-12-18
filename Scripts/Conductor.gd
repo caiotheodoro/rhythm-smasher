@@ -86,6 +86,9 @@ func get_remaining_time():
 	var seconds = int(int(remaining_seconds) % 60)
 	return str(minutes) + ":" + str(seconds).pad_zeros(2)
 
+func has_ended():
+	var remaining_seconds = total_length - song_position
+	return remaining_seconds <=0
 
 
 func stop_music():

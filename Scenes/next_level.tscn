@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6m0bmwau4xek"]
+[gd_scene load_steps=9 format=3 uid="uid://c6m0bmwau4xek"]
 
 [ext_resource type="Script" path="res://Scripts/next_level.gd" id="1_bn3ta"]
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_5x61y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://gvb2pej15m8f" path="res://Sprites/boards/player.png" id="5_vu3cg"]
 [ext_resource type="Texture2D" uid="uid://dq7cprpmqf6f7" path="res://Sprites/boards/violoncelo.png" id="6_saneu"]
 [ext_resource type="Texture2D" uid="uid://bk35mi5egaof0" path="res://Sprites/versus.png" id="7_kbcit"]
+[ext_resource type="PackedScene" uid="uid://brpwcsqsnk3f4" path="res://Scenes/transition.tscn" id="8_4wast"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,11 +48,12 @@ text = "Sucesso!!"
 
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 6.0
-offset_right = 224.0
-offset_bottom = 29.0
+offset_left = 185.0
+offset_top = 8.0
+offset_right = 225.0
+offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5x61y")
 theme_override_font_sizes/font_size = 10
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -98,6 +100,7 @@ offset_bottom = 128.0
 texture = ExtResource("7_kbcit")
 
 [node name="bossName2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 35.0
 offset_right = 104.0
@@ -117,4 +120,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_5x61y")
 theme_override_font_sizes/font_size = 10
 
+[node name="Transition" parent="." instance=ExtResource("8_4wast")]
+
+[node name="Timer" type="Timer" parent="Transition"]
+
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="timeout" from="Transition/Timer" to="." method="_on_timer_timeout"]

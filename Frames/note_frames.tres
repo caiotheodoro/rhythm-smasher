@@ -1,11 +1,40 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://cuajykmby5rj0"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cuajykmby5rj0"]
 
 [ext_resource type="Texture2D" uid="uid://dqsoq2prwckem" path="res://Sprites/game/arrow_button/up/arrow_button_up3.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d1p7ctf3sqanj" path="res://Sprites/game/arrow_button/left/arrow_button_left4.png" id="1_2spmq"]
 [ext_resource type="Texture2D" uid="uid://gjyvwjo241ic" path="res://Sprites/game/arrow_button/right/arrow_button_right3.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://hm7v4o3qh55d" path="res://Sprites/game/arrow_button/up/arrow_button_up4.png" id="2_ydglu"]
 [ext_resource type="Texture2D" uid="uid://by8igox0mtjuy" path="res://Sprites/game/arrow_button/left/arrow_button_left3.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cphvi6g42mepf" path="res://Sprites/game/arrow_button/right/arrow_button_right4.png" id="3_ps5kj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvjfw"]
+atlas = ExtResource("1_2spmq")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oib68"]
+atlas = ExtResource("2_ydglu")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i6yi"]
+atlas = ExtResource("3_ps5kj")
+region = Rect2(0, 0, 24, 24)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvjfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oib68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i6yi")
+}],
+"loop": true,
+"name": &"bonus",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3")

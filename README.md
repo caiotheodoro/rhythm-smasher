@@ -40,4 +40,5 @@ proximas sequencias e quando é possivel usar o comando de defesa
   - Adicionado indicativos de dano ao boss, informando o dano causado pelo player a cada acerto
   - Reformulação das artes e animações do jogo
   - Adicionada animações de transição entre as fases
+  - Finalização do jogo ao fim do tempo da musica
   

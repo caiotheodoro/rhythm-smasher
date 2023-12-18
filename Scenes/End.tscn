@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4a5ou60bmcf"]
+[gd_scene load_steps=6 format=3 uid="uid://d4a5ou60bmcf"]
 
 [ext_resource type="Script" path="res://Scripts/End.gd" id="1_83e5n"]
 [ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="3_byjqs"]
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="3_q8i01"]
+[ext_resource type="AudioStream" uid="uid://cou2hcspqqufo" path="res://Songs/win.mp3" id="5_45oeb"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="5_btjoi"]
 
 [node name="End" type="Node2D"]
@@ -50,5 +51,8 @@ offset_bottom = 76.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_q8i01")
 text = "Fim de jogo!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_45oeb")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

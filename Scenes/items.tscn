@@ -1,0 +1,173 @@
+[gd_scene load_steps=20 format=3 uid="uid://btfejv8puktv6"]
+
+[ext_resource type="Texture2D" uid="uid://di5ltihovw58" path="res://Sprites/item_spot.png" id="1_84yce"]
+[ext_resource type="Script" path="res://Scripts/items.gd" id="1_lm3da"]
+[ext_resource type="Texture2D" uid="uid://dq4vnel4b8t6v" path="res://Sprites/items/double_score.png" id="2_7wtdc"]
+[ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_8iixf"]
+[ext_resource type="Texture2D" uid="uid://m325lk1r3me8" path="res://Sprites/items/immortal1t.png" id="4_wofw7"]
+[ext_resource type="Texture2D" uid="uid://yxiswqxdt77y" path="res://Sprites/items/stab.png" id="5_vmp5e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm1l2"]
+atlas = ExtResource("2_7wtdc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrjbs"]
+atlas = ExtResource("2_7wtdc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xvl1"]
+atlas = ExtResource("2_7wtdc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v762b"]
+atlas = ExtResource("2_7wtdc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_325a5"]
+atlas = ExtResource("4_wofw7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3ktq"]
+atlas = ExtResource("4_wofw7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjrj8"]
+atlas = ExtResource("4_wofw7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca4dj"]
+atlas = ExtResource("4_wofw7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg7nu"]
+atlas = ExtResource("5_vmp5e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb1ec"]
+atlas = ExtResource("5_vmp5e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p3x5"]
+atlas = ExtResource("5_vmp5e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhcep"]
+atlas = ExtResource("5_vmp5e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmwek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm1l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrjbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xvl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v762b")
+}],
+"loop": true,
+"name": &"item1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_325a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3ktq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjrj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca4dj")
+}],
+"loop": true,
+"name": &"item2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg7nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb1ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p3x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhcep")
+}],
+"loop": true,
+"name": &"item3",
+"speed": 10.0
+}]
+
+[node name="Items" type="Node2D"]
+script = ExtResource("1_lm3da")
+
+[node name="Item1" type="TouchScreenButton" parent="."]
+position = Vector2(2, 0)
+texture_normal = ExtResource("1_84yce")
+
+[node name="Item1" type="AnimatedSprite2D" parent="Item1"]
+position = Vector2(35.3103, 30.1035)
+scale = Vector2(1.10345, 1.10345)
+sprite_frames = SubResource("SpriteFrames_xmwek")
+animation = &"item1"
+frame_progress = 0.039903
+
+[node name="Timer1" type="Timer" parent="Item1"]
+wait_time = 15.0
+
+[node name="Item2" type="TouchScreenButton" parent="."]
+position = Vector2(73, 0)
+texture_normal = ExtResource("1_84yce")
+
+[node name="Item2" type="AnimatedSprite2D" parent="Item2"]
+position = Vector2(35.3103, 30.1035)
+scale = Vector2(1.10345, 1.10345)
+sprite_frames = SubResource("SpriteFrames_xmwek")
+animation = &"item2"
+frame_progress = 0.97854
+
+[node name="Timer2" type="Timer" parent="Item2"]
+wait_time = 8.0
+
+[node name="Counter" type="Label" parent="Item2"]
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 51.0
+offset_bottom = 47.0
+
+[node name="Item3" type="TouchScreenButton" parent="."]
+position = Vector2(144, 0)
+texture_normal = ExtResource("1_84yce")
+
+[node name="Item3" type="AnimatedSprite2D" parent="Item3"]
+position = Vector2(35.3103, 34.1035)
+scale = Vector2(1.10345, 1.10345)
+sprite_frames = SubResource("SpriteFrames_xmwek")
+animation = &"item3"
+frame_progress = 0.92341
+
+[node name="Label" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 61.0
+offset_right = 190.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("2_8iixf")
+theme_override_font_sizes/font_size = 12
+text = "Z        X        C"
+
+[connection signal="pressed" from="Item1" to="." method="_on_item_1_pressed"]
+[connection signal="timeout" from="Item1/Timer1" to="." method="_on_timer_1_timeout"]
+[connection signal="pressed" from="Item2" to="." method="_on_item_2_pressed"]
+[connection signal="timeout" from="Item2/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="pressed" from="Item3" to="." method="_on_item_3_pressed"]

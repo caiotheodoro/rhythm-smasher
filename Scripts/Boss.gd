@@ -27,6 +27,7 @@ signal boss_health_changed
 @onready var defeatText = $DefeatText
 @onready var bossBody = $Body
 @onready var successAudio = $Success
+@onready var stab = $Stab
 @onready var nextScene = $NextScene
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -56,6 +57,10 @@ func _physics_process(delta):
 	
 	
 func hurt_by_player(multiplier: int):
+	if Global.boss_bleed:
+		current_boss_health -= 350
+		Global.boss_bleed = false
+		stab.play()
 	current_boss_health -= 1 * multiplier
 	if current_boss_health <= 0:
 		explosion.visible = true

@@ -1,9 +1,121 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbm5np3fwngxu"]
+[gd_scene load_steps=14 format=3 uid="uid://bbm5np3fwngxu"]
 
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="1_gawg6"]
+[ext_resource type="Shader" path="res://Scenes/Note.gdshader" id="2_hpop0"]
 [ext_resource type="SpriteFrames" uid="uid://cuajykmby5rj0" path="res://Frames/note_frames.tres" id="2_hxgjc"]
+[ext_resource type="Shader" path="res://Scenes/Note_bonus.gdshader" id="3_tlysh"]
 [ext_resource type="Texture2D" uid="uid://bn3706wi637bc" path="res://Sprites/game/particles/star.png" id="5_bikjj"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="6_qk44h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrog3"]
+shader = ExtResource("2_hpop0")
+shader_parameter/effect_filling = 1.0
+shader_parameter/angle = 0.0
+shader_parameter/keep_saturation = 1.0
+shader_parameter/keep_luminance = 1.0
+shader_parameter/color_start = Color(0.0313726, 0, 1, 1)
+shader_parameter/start_pos = 0.0
+shader_parameter/color_mid = Color(1, 1, 1, 1)
+shader_parameter/mid_pos = 0.5
+shader_parameter/color_end = Color(1, 1, 1, 1)
+shader_parameter/end_pos = 1.0
+shader_parameter/midpos_enabled = false
+shader_parameter/range_start = 0.0
+shader_parameter/range_end = 1.0
+shader_parameter/range_softedge = 0.1
+
+[sub_resource type="Animation" id="Animation_dic6j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_rrog3")]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66xd3"]
+shader = ExtResource("3_tlysh")
+shader_parameter/effect_filling = 1.0
+shader_parameter/angle = 0.0
+shader_parameter/keep_saturation = 1.0
+shader_parameter/keep_luminance = 1.0
+shader_parameter/color_start = Color(0.0313726, 0, 1, 1)
+shader_parameter/start_pos = 0.0
+shader_parameter/color_mid = Color(1, 1, 1, 1)
+shader_parameter/mid_pos = 0.5
+shader_parameter/color_end = Color(1, 1, 1, 1)
+shader_parameter/end_pos = 1.0
+shader_parameter/midpos_enabled = false
+shader_parameter/range_start = 0.0
+shader_parameter/range_end = 1.0
+shader_parameter/range_softedge = 0.1
+
+[sub_resource type="Animation" id="Animation_d6cdg"]
+resource_name = "bonus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_66xd3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color_start")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0313726, 0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4u4vu"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_rrog3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color_start")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.52549, 0.105882, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnonv"]
+_data = {
+"RESET": SubResource("Animation_dic6j"),
+"bonus": SubResource("Animation_d6cdg"),
+"normal": SubResource("Animation_4u4vu")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1if3f"]
 size = Vector2(8, 8)
@@ -13,7 +125,13 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gawg6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rrog3")
 sprite_frames = ExtResource("2_hxgjc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_xnonv")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1if3f")

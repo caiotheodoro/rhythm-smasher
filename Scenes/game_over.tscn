@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://df5nc2wutl8s8"]
+[gd_scene load_steps=6 format=3 uid="uid://df5nc2wutl8s8"]
 
 [ext_resource type="Script" path="res://Scenes/game_over.gd" id="1_p48pm"]
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="2_sxlr6"]
 [ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="3_1ggx4"]
+[ext_resource type="AudioStream" uid="uid://ct5umn4agswws" path="res://Songs/end.mp3" id="4_2ecj8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccspm"]
 font = ExtResource("2_sxlr6")
@@ -25,11 +26,13 @@ offset_bottom = 176.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 56.0
-offset_right = 313.0
-offset_bottom = 114.0
-text = "Fim de jogo"
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 388.0
+offset_bottom = 120.0
+scale = Vector2(0.614465, 0.587053)
+theme_override_font_sizes/font_size = 10
+text = "Voce morreu."
 label_settings = SubResource("LabelSettings_ccspm")
 
 [node name="Button" type="Button" parent="."]
@@ -44,18 +47,25 @@ text = "Jogar novamente"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 8.0
+offset_right = 81.0
+offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sxlr6")
 theme_override_font_sizes/font_size = 10
 text = "Score final:"
 
 [node name="FinalScore" type="Label" parent="."]
 layout_mode = 0
-offset_left = 54.0
-offset_right = 94.0
-offset_bottom = 23.0
+offset_left = 80.0
+offset_top = 9.0
+offset_right = 120.0
+offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sxlr6")
 theme_override_font_sizes/font_size = 10
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2ecj8")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

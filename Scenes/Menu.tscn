@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djr5d1o7ty1pb"]
+[gd_scene load_steps=13 format=3 uid="uid://djr5d1o7ty1pb"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_t3m4y"]
 [ext_resource type="Theme" uid="uid://cje3o3hqf73le" path="res://Tres/new_theme.tres" id="2_ovjgq"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="4_8e3md"]
 [ext_resource type="AudioStream" uid="uid://ceunhl5l845cr" path="res://Songs/start.mp3" id="5_nv0ya"]
 [ext_resource type="Texture2D" uid="uid://b3w2xjw6ykfv1" path="res://Sprites/song-animation-infinite.png" id="6_a7bph"]
+[ext_resource type="PackedScene" uid="uid://brpwcsqsnk3f4" path="res://Scenes/transition.tscn" id="7_tj8p8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mr8f"]
 atlas = ExtResource("6_a7bph")
@@ -118,7 +119,12 @@ sprite_frames = SubResource("SpriteFrames_6h8ui")
 frame = 1
 frame_progress = 0.644403
 
+[node name="Transition" parent="." instance=ExtResource("7_tj8p8")]
+
+[node name="Timer" type="Timer" parent="Transition"]
+
 [connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="Instrucoes" to="." method="_on_instrucoes_pressed"]
 [connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]
+[connection signal="timeout" from="Transition/Timer" to="." method="_on_timer_timeout"]

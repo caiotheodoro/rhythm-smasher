@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmmkegp00cl18"]
+[gd_scene load_steps=15 format=3 uid="uid://dmmkegp00cl18"]
 
 [ext_resource type="Texture2D" uid="uid://gxul17x2bg3l" path="res://Sprites/game/road/background_0.png" id="1_8gvvs"]
 [ext_resource type="Script" path="res://Levels/test_level.gd" id="1_ufv3d"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c10twjn57l7a6" path="res://Scenes/fullscreen_button.tscn" id="8_1x888"]
 [ext_resource type="PackedScene" uid="uid://dgh07jk6yid5x" path="res://Scenes/hearths_container.tscn" id="8_yr2ju"]
 [ext_resource type="Texture2D" uid="uid://mqiaufvqbnlm" path="res://Sprites/game/road/point.png" id="9_640ie"]
+[ext_resource type="PackedScene" uid="uid://btfejv8puktv6" path="res://Scenes/items.tscn" id="10_63mc6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8rvho"]
 load_path = "res://.godot/imported/Tiles.png-c0a36c509e6e5539add11c5b88591976.ctex"
@@ -2724,3 +2725,7 @@ offset_right = -32.0
 offset_bottom = 128.0
 scale = Vector2(1.12784, 0.965849)
 texture = ExtResource("9_640ie")
+
+[node name="Items" parent="." instance=ExtResource("10_63mc6")]
+position = Vector2(-9, 136)
+scale = Vector2(0.492418, 0.484416)

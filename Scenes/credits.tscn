@@ -30,17 +30,34 @@ text = "Créditos"
 [node name="Label" type="Label" parent="Label"]
 layout_mode = 0
 offset_left = -109.0
-offset_top = 35.0
-offset_right = 43.0
-offset_bottom = 110.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 143.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Arte & Código:
 Caio Theodoro
 
-Músicas & Efeitos:
+Músicas:
+Aries Beats – Heavy Synthwave Party
+HOME - Nosebleed
 ULTRAWAVE - OCEANDRIVE
 Home - Head First
 LIL MORĪ – プラネットx [Synthwave]"
+
+[node name="Label" type="Label" parent="Label/Label"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 42.0
+offset_right = 439.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "Efeitos:
+Knife Stab Sound Effect
+Clock Sound Effect
+Danger Sound Effect
+Success Sound Effect
+"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

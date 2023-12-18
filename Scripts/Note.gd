@@ -8,12 +8,28 @@ const LEFT_LANE_SPAWN = Vector2(10, SPAWN_Y)
 const CENTER_LANE_SPAWN = Vector2(30, SPAWN_Y)
 const RIGHT_LANE_SPAWN = Vector2(50, SPAWN_Y)
 
+
+var new_texture_path1 = "res://Sprites/game/arrow_button/left/arrow_button_left4.png"
+var new_texture_path2 = "res://Sprites/game/arrow_button/right/arrow_button_right4.png"
+var new_texture_path3= "res://Sprites/game/arrow_button/up/arrow_button_up4.png"
+
+var texture_path1 = "res://Sprites/game/arrow_button/left/arrow_button_left3.png"
+var texture_path2 = "res://Sprites/game/arrow_button/right/arrow_button_right3.png"
+var texture_path3= "res://Sprites/game/arrow_button/up/arrow_button_up3.png"
+
+
+@onready var notes = $AnimatedSprite2D
+
+@onready var notes_animation = $AnimatedSprite2D/AnimationPlayer
 var speed = 0
 var hit = false
 
 func _ready():
-	pass
+	notes_animation.play("normal")
 	
+
+
+		
 func _physics_process(delta):
 	if !hit:
 		position.y += speed * delta
@@ -54,6 +70,13 @@ func destroy(score):
 		$Node2D/Label.text = "OK"
 		$Node2D/Label.modulate = Color("6e3636")
 		
+
+func change_sprite():
+	if Global.bonus_value != 0:
+		notes_animation.play("bonus")
+		
+	else:
+		notes_animation.play("normal")
 
 
 

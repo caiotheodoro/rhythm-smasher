@@ -31,12 +31,18 @@ var instance2
 
 @onready var player = $Player
 @onready var boss = $Boss
+@onready var clock = $Clock
+@onready var smash = $Smash
+@onready var smash_timer = $Smash/SmashTimer
 @onready var bossHealthBar = $CanvasLayer2/bossHealthBar
 @onready var conductor = $Conductor
+@onready var danger = $Danger
 @onready var bossHabilityText = $BossHability
 @onready var textTimer = $TextTimer
 @onready var notesTimer = $NotesTimer
 @onready var error = $Error
+@onready var clockSound = $ClockSound
+@onready var clockSoundTimer = $ClockSound/ClockTimer
 @onready var bossDamage = $Damage
 @onready var anim = $AnimatedSprite2D
 @onready var damageTimer = $Damage/DamageTimer
@@ -46,6 +52,8 @@ var instance2
 @onready var al = $ArrowLeft
 @onready var ar = $ArrowRight
 func _ready():
+	clock.visible = false
+	smash.visible = false
 	explosion.visible = false
 	au.visible = true
 	ar.visible = true
@@ -146,6 +154,7 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
+		instance.change_sprite()
 	if to_spawn > 1:
 		while rand == lane:
 			rand = randi() % 3
@@ -153,6 +162,8 @@ func _spawn_notes(to_spawn):
 		instance = note.instantiate()
 		instance.initialize(lane)
 		add_child(instance)
+		instance.change_sprite()
+	
 
 func increment_score(by):
 	if by > 0:
@@ -160,16 +171,19 @@ func increment_score(by):
 		damageTimer.start()
 		anim.visible = true
 		notesTimer.start()
-		combo += 1
+		combo += 1 + Global.bonus_value
 		boss.set_end_boss_callback(end_boss)
 		boss.hurt_by_player(combo)
 		bossDamage.text = str(-combo)
 		bossHealthBar.update(boss.current_boss_health * 100 / boss.boss_health)
 			
 	else:
-		error.play()
-		player.hurted()
-		combo = 0
+		if not Global.isImoral:
+			error.play()
+			player.hurted()
+			combo = 0
+		if Global.doubleDamage:
+			player.hurted()
 	
 	if by == 3:
 		great += 1
@@ -212,13 +226,26 @@ func play_music(music: String):
 
 func  _process(delta):
 	$RemainTime.text = str($Conductor.get_remaining_time())
-
+	if str($Conductor.get_remaining_time()) == "0:00":
+		get_tree().change_scene_to_file("res://Scenes/End.tscn")
+	if Global.currentBoss.hasSmash:
+		if str($Conductor.get_remaining_time()) == Global.currentBoss.smashTimer:
+			smash.visible = true
+			Global.doubleDamage = true
+			smash.play("default")
+			smash_timer.start()
+			danger.play()
+	
+	
 #
 func _on_timer_timeout():
-	print(Global.currentBoss.timer.speed)
-	$Conductor.change_speed_ingame(Global.currentBoss.timer.speed)
-	bossHabilityText.text = Global.currentBoss.timer.name
-	textTimer.start()
+	if Global.currentBoss.hasTimeHability:
+		$Conductor.change_speed_ingame(Global.currentBoss.timer.speed)
+		clock.visible = true
+		clock.play("default")
+		clockSound.play()
+		clockSoundTimer.start()
+		textTimer.start()
 	
 
 
@@ -234,3 +261,11 @@ func _on_notes_timer_timeout():
 func _on_damage_timer_timeout():
 	bossDamage.text = ""
 
+
+
+func _on_clock_timer_timeout():
+	clock.visible = false
+
+
+func _on_smash_timer_timeout():
+	smash.visible = false

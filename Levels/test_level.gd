@@ -7,7 +7,6 @@ extends Node2D
 @onready var game = $Game
 @onready var timer = $Game/Timer
 func _ready():
-	print(Global.currentBoss)
 	player.set_max_health(6)
 	boss.set_max_health(Global.currentBoss.life)
 	heartsContainer.setMaxHearts(player.maxHealth)

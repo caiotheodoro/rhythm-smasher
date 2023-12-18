@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bqp4o0u3e25py"]
+[gd_scene load_steps=43 format=3 uid="uid://bqp4o0u3e25py"]
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_tkyh6"]
 [ext_resource type="Texture2D" uid="uid://dweqdl0wh6g4g" path="res://Sprites/bosses/crow-boss.png" id="2_dx3cp"]
@@ -7,10 +7,37 @@
 [ext_resource type="Texture2D" uid="uid://mf53vaojmp7a" path="res://Sprites/bosses/violoncelo-boss.png" id="5_ul022"]
 [ext_resource type="AudioStream" uid="uid://mj6j83yumjje" path="res://Songs/success-new.mp3" id="6_qfjsh"]
 [ext_resource type="FontFile" uid="uid://b664sspmvlu3h" path="res://Fonts/manaspc.ttf" id="7_ao84y"]
+[ext_resource type="AudioStream" uid="uid://dno5bl00pifqs" path="res://Songs/stab.mp3" id="8_jyr1x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dac0"]
 radius = 13.0
 height = 50.0
+
+[sub_resource type="Animation" id="Animation_p87ms"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dx3cp")]
+}
 
 [sub_resource type="Animation" id="Animation_mia15"]
 resource_name = "boss2_idle"
@@ -118,32 +145,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_p87ms"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_dx3cp")]
 }
 
 [sub_resource type="Animation" id="Animation_s6j1n"]
@@ -414,6 +415,10 @@ text = "Voce eliminou o inimigo!"
 [node name="NextScene" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
+
+[node name="Stab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jyr1x")
+volume_db = 3.467
 
 [connection signal="timeout" from="ExplosionTime" to="." method="_on_explosion_time_timeout"]
 [connection signal="timeout" from="NextScene" to="." method="_on_next_scene_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crqqxkb3nmoyy"]
+[gd_scene load_steps=41 format=3 uid="uid://crqqxkb3nmoyy"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_w2h0b"]
 [ext_resource type="PackedScene" uid="uid://b71mhw8y1t7pc" path="res://Scenes/ArrowButton.tscn" id="2_r8yyp"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bvmkkwixkwrk3" path="res://Sprites/healthbarProgress.png" id="13_r2pbh"]
 [ext_resource type="Texture2D" uid="uid://bre4qy416luri" path="res://Sprites/song-animation.png" id="14_kcg28"]
 [ext_resource type="AudioStream" uid="uid://b008vmpqea8om" path="res://Songs/error.mp3" id="15_i50sj"]
+[ext_resource type="Texture2D" uid="uid://yuhsm76nsdtk" path="res://Sprites/clock.png" id="16_s0jq4"]
+[ext_resource type="AudioStream" uid="uid://dsfv0d8djt06u" path="res://Songs/clock.mp3" id="17_m03l4"]
+[ext_resource type="Texture2D" uid="uid://bgalr00s6u163" path="res://Sprites/smash.png" id="18_62834"]
+[ext_resource type="AudioStream" uid="uid://6x70d525xrx7" path="res://Songs/danger.mp3" id="19_lh4an"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifsfu"]
 atlas = ExtResource("14_kcg28")
@@ -71,6 +75,99 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfusn"]
+atlas = ExtResource("16_s0jq4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufihg"]
+atlas = ExtResource("16_s0jq4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqeb1"]
+atlas = ExtResource("16_s0jq4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfw3l"]
+atlas = ExtResource("16_s0jq4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipu3x"]
+atlas = ExtResource("16_s0jq4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1a7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfusn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufihg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqeb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfw3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipu3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xysl8"]
+atlas = ExtResource("18_62834")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tkgt"]
+atlas = ExtResource("18_62834")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhkhr"]
+atlas = ExtResource("18_62834")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfwyc"]
+atlas = ExtResource("18_62834")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufd17"]
+atlas = ExtResource("18_62834")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y64xa"]
+atlas = ExtResource("18_62834")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lc7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xysl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tkgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhkhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfwyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufd17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y64xa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
 }]
 
 [node name="Game" type="Node2D"]
@@ -201,9 +298,35 @@ theme_override_font_sizes/font_size = 8
 [node name="DamageTimer" type="Timer" parent="Damage"]
 wait_time = 0.8
 
+[node name="Clock" type="AnimatedSprite2D" parent="."]
+position = Vector2(159, 6)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_k1a7j")
+frame_progress = 0.6812
+
+[node name="ClockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_m03l4")
+volume_db = 4.16
+
+[node name="ClockTimer" type="Timer" parent="ClockSound"]
+wait_time = 5.0
+
+[node name="Smash" type="AnimatedSprite2D" parent="."]
+position = Vector2(154, 6)
+sprite_frames = SubResource("SpriteFrames_7lc7g")
+frame_progress = 0.46126
+
+[node name="SmashTimer" type="Timer" parent="Smash"]
+wait_time = 5.0
+
+[node name="Danger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_lh4an")
+
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Measure" from="Conductor" to="." method="_on_conductor_measure"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="NotesTimer" to="." method="_on_notes_timer_timeout"]
 [connection signal="timeout" from="Damage/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="ClockSound/ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="timeout" from="Smash/SmashTimer" to="." method="_on_smash_timer_timeout"]

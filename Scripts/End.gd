@@ -1,6 +1,8 @@
 extends Node2D
 
+@onready var audio = $AudioStreamPlayer
 func _ready():
+	audio.play()
 	$ScoreNumber.text = str(Global.score)
 
 
